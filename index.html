@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Revisión de Coches - Inicio</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+
+/* HEADER */
+header {
+    background: #111;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo {
+    width: 120px;        /* espacio reservado para el logo */
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 5px;
+    transform: translateX(850px); /* 👈 mueve SOLO la imagen visualmente */
+}
+
+
+nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
+nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
+nav ul.menu li a:hover { color:#ff4500; }
+.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
+@media(max-width:768px){
+    header { justify-content: space-between; }
+    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
+    nav ul.menu.show { display:flex; }
+    .menu-toggle { display:block; }
+}
+
+/* HERO */
+.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
+.hero h1 { font-size:2.5rem; margin-bottom:20px; }
+.hero p { font-size:1.2rem; margin-bottom:30px; }
+.btn-primary { background:#ff4500; color:white; border:none; padding:12px 20px; border-radius:5px; font-weight:bold; cursor:pointer; text-decoration:none; }
+.btn-primary:hover { background:#e03e00; }
+
+/* SECCIONES DE TRES PARRAFOS */
+.section-parrafos { display:flex; flex-direction:column; gap:40px; padding:60px 20px; max-width:1200px; margin:auto; }
+.parrafo { text-align:center; }
+.parrafo img { max-width:100%; height:auto; margin-bottom:15px; border-radius:5px; }
+.parrafo h3 { font-size:1.8rem; margin-bottom:10px; }
+.parrafo p { font-size:1rem; color:#555; }
+
+/* Responsive */
+@media(min-width:768px){
+    .section-parrafos { gap:60px; }
+}
+/* MARCA A LOS LADOS */
+.marca {
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.rojo { color: #e10600; }
+.amarillo { color: #ffcc00; }
+.blanco { color: #ffffff; }
+
+/* Ajuste del header */
+header {
+    background: #111;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Centrar menú */
+nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Ocultar marca derecha en móviles para que no se vea cargado */
+@media(max-width:768px){
+    .marca-der {
+        display: none;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <div class="marca marca-izq">
+        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+    </div>
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo de la tienda">
+    </div>
+
+    <span class="menu-toggle">&#9776;</span>
+
+    <nav>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tarifas.html">Tarifas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="marca marca-der">
+        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Revisa tu coche de segunda mano con profesionales</h1>
+    <p>Compra con seguridad y evita sorpresas desagradables.</p>
+    <a href="contacto.html" class="btn-primary">Solicita una revisión</a>
+</section>
+
+<!-- SECCIONES DE TRES PARRAFOS -->
+<section class="section-parrafos">
+
+    <div class="parrafo">
+        <img src="imagen1.jpg" alt="Inspección rápida">
+        <h3>Servicios</h3>
+        <p>Revisamos los puntos clave de tu coche para garantizar que no haya problemas ocultos y puedas comprar con confianza.</p>
+    </div>
+
+    <div class="parrafo">
+        <img src="imagen2.jpg" alt="Informe completo">
+        <h3>Marcas</h3>
+        <p>Realizamos un informe detallado del estado del vehículo, incluyendo motor, chasis y electrónica, con fotos y recomendaciones.</p>
+    </div>
+
+    <div class="parrafo">
+        <img src="imagen3.jpg" alt="Asesoramiento profesional">
+        <h3>Asesoramiento profesional</h3>
+        <p>Nuestros expertos te guiarán en la compra, resolviendo dudas y asegurando que tomes la mejor decisión para tu inversión.</p>
+    </div>
+
+</section>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+</script>
+
+</body>
+</html>
