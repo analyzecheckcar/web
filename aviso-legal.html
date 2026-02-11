@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarifas</title>
+<title>Información Legal</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
@@ -22,19 +22,16 @@ header {
     z-index: 1000;
 }
 .logo {
-    width: 120px;        /* espacio reservado para el logo */
+    width: 120px;
     display: flex;
     justify-content: flex-start;
 }
-
 .logo img {
     height: 50px;
     width: auto;
     border-radius: 5px;
-    transform: translateX(350px); /* 👈 mueve SOLO la imagen visualmente */
+    transform: translateX(250px);
 }
-
-
 nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
 nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
 nav ul.menu li a:hover { color:#ff4500; }
@@ -47,23 +44,13 @@ nav ul.menu li a:hover { color:#ff4500; }
     .menu-toggle { display:block; }
 }
 
-/* SECCIÓN TARIFAS */
-section { padding:60px 20px; text-align:center; }
-h2 { margin-bottom:20px; }
-.tarifas-container { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:20px; }
-.tarifa { background:white; border:1px solid #ddd; padding:20px; width:250px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
-.tarifa h3 { margin-bottom:15px; }
-.tarifa p { margin-bottom:15px; font-size:0.95rem; }
-.btn-primary { background:#25D366; color:white; border:none; padding:12px 20px; border-radius:5px; font-weight:bold; cursor:pointer; font-size:16px; text-decoration:none; display:inline-block; }
-.btn-primary:hover { background:#128C7E; }
+/* HERO (MISMO ESTILO QUE INICIO) */
+.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
+.hero h1 { font-size:2.5rem; margin-bottom:20px; }
+.hero p { font-size:1.2rem; margin-bottom:30px; }
 
-/* MARCA A LOS LADOS */
-.marca {
-    font-weight: bold;
-    font-size: 1.2rem;
-    white-space: nowrap;
-}
-
+/* MARCA */
+.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
 .rojo { color: #e10600; }
 .amarillo { color: #ffcc00; }
 .blanco { color: #ffffff; }
@@ -80,21 +67,11 @@ header {
     top: 0;
     z-index: 1000;
 }
+nav { flex-grow: 1; display: flex; justify-content: center; }
 
-/* Centrar menú */
-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-/* Ocultar marca derecha en móviles para que no se vea cargado */
 @media(max-width:768px){
-    .marca-der {
-        display: none;
-    }
+    .marca-der { display: none; }
 }
-
 </style>
 </head>
 <body>
@@ -116,7 +93,6 @@ nav {
             <li><a href="tarifas.html">Tarifas</a></li>
             <li><a href="contacto.html">Contacto</a></li>
             
-
         </ul>
     </nav>
 
@@ -125,73 +101,70 @@ nav {
     </div>
 </header>
 
+<!-- 👇 SOLO CAMBIA ESTE BLOQUE -->
+<section class="hero">
+    <h1>Información Legal</h1>
+    <p>Aviso legal, política de privacidad y política de cookies de ANALYZECHECKCAR.</p>
+</section>
 
-<section>
-    <h2>Nuestras Tarifas</h2>
-    <div class="tarifas-container">
-        <div class="tarifa">
-            <h3>Básica</h3>
-            <p>
-               <li>Diagnosis de lectura de fallos</li>
-               <li>Comprobación de Km reales </li>
-               <li>Detección de golpes ocultos </li>
-               <li>Verificación del motor </li>
-               <li>Verificación de caja de cambios </li>
-               <li>Prueba de conducción </li>
-            </p>
-            <p><strong>180€</strong></p>
-            <a href="#" onclick="enviarWhatsApp('Básica')" class="btn-primary">WhatsApp</a>
-        </div>
-        <div class="tarifa">
-            <h3>Completa</h3>
-            <p>
-                <li>Diagnosis de lectura de fallos</li>
-               <li>Comprobación de Km reales </li>
-               <li>Detección de golpes ocultos </li>
-               <li>Verificación del motor </li>
-               <li>Verificación de caja de cambios </li>
-               <li>Prueba de conducción </li>
-            </p>
-            <p><strong>200€</strong></p>
-            <a href="#" onclick="enviarWhatsApp('Completa')" class="btn-primary">WhatsApp</a>
-        </div>
-        <div class="tarifa">
-            <h3>Premium</h3>
-            <p>
-                <li>Diagnosis de lectura de fallos</li>
-               <li>Comprobación de Km reales </li>
-               <li>Detección de golpes ocultos </li>
-               <li>Verificación del motor </li>
-               <li>Verificación de caja de cambios </li>
-               <li>Prueba de conducción </li>
-            </p>
-            <p><strong>220€</strong></p>
-            <a href="#" onclick="enviarWhatsApp('Premium')" class="btn-primary">WhatsApp</a>
-        </div>
-    </div>
+<section style="max-width:1000px; margin:40px auto; padding:0 20px;">
+    <h2>Aviso Legal</h2>
+    <p>CONDICIONES DEL SERVICIO Y EXENCIÓN DE RESPONSABILIDAD
+Servicio de inspección de vehículos de ocasión (“Analyze CheckCar”)
+<li>1. Naturaleza del servicio
+    El servicio de Check Car consiste en una inspección visual, funcional y electrónica no invasiva del vehículo en el estado en que se encuentra en el momento de la revisión.
+    No se realiza desmontaje de piezas, apertura de motor (solo de la tapa motor si la ubiera) caja de cambios, elementos internos, ni pruebas destructivas de ningún tipo.</li>
+<li>2. Alcance de la inspección
+    La inspección puede incluir, entre otros:
+    Diagnóstico electrónico mediante herramienta OBD.
+    Revisión visual de motor, transmisión, suspensión, frenos y carrocería.
+    Prueba dinámica (si las condiciones lo permiten).
+    Revisión de documentación aportada por el vendedor.
+    Detección de posibles anomalías visibles o síntomas compatibles con averías.
+    ⚠️ No se garantiza la detección de fallos ocultos, intermitentes, electrónicos futuros, ni averías que no se manifiesten en el momento de la inspección.</li>
+<li>3. Limitaciones del servicio
+    El cliente acepta expresamente que:
+    El vehículo puede presentar averías futuras aunque el resultado del informe sea favorable.
+    Componentes sujetos a desgaste (embrague, turbo, inyectores, batería, DPF, etc.) pueden fallar posteriormente sin que ello implique error en la inspección.
+    El servicio no equivale a una garantía mecánica ni sustituye a una revisión en taller con desmontaje.</li>
+<li>4. Informe y conclusiones
+    El informe emitido refleja:
+    El estado del vehículo en la fecha y hora de la inspección.
+    Una opinión técnica basada en la experiencia profesional, no una garantía absoluta.
+    Las conclusiones tienen carácter orientativo para ayudar al cliente en su decisión de compra.
+    👉 La decisión final de compra es siempre responsabilidad exclusiva del cliente.</li>
+<li>5. Responsabilidad
+    El prestador del servicio:
+    No se hace responsable de averías, daños o defectos que aparezcan con posterioridad a la inspección.
+    No asume responsabilidad económica por reparaciones, pérdidas, reclamaciones al vendedor o gastos derivados de la compra del vehículo.
+    No responde por información falsa, incompleta u ocultada por el vendedor.
+    La responsabilidad del servicio queda limitada al importe abonado por el cliente, en caso de demostrarse negligencia grave.</li>
+<li>6. Relación con el vendedor
+    El servicio de Check Car es independiente y se presta exclusivamente en interés del cliente comprador.
+    No existe relación contractual con el vendedor del vehículo, ni responsabilidad sobre acuerdos de compraventa, garantías o compromisos entre las partes.</li>
+<li>7. Aceptación del servicio
+    La contratación del servicio implica:
+    Haber leído y comprendido estas condiciones.
+    Aceptar expresamente las limitaciones y exención de responsabilidad.
+    Reconocer que el servicio no garantiza el estado futuro del vehículo.</li></p>
+
+    <h2>Propiedad Intelectual</h2>
+    <p>Todos los contenidos están protegidos...</p>
+
+    <h2>Responsabilidad</h2>
+    <p>No nos hacemos responsables del uso indebido...</p>
+
+    <h2>Política de Privacidad</h2>
+    <p>Los datos recogidos se usarán solo para responder consultas...</p>
+
+    <h2>Política de Cookies</h2>
+    <p>Esta web utiliza cookies técnicas y de análisis...</p>
 </section>
 
 <script>
-// Menú hamburguesa
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
 toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-
-// Función WhatsApp
-function enviarWhatsApp(tarifa) {
-    const numero = "34123456789"; // <-- Cambia por tu número
-    const mensaje = `Hola, quiero contratar la tarifa ${tarifa}`;
-    const urlMobile = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
-    const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
-    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // abrir app WhatsApp en móvil
-        window.location.href = urlMobile;
-    } else {
-        // abrir WhatsApp Web en PC
-        window.open(urlWeb, "_blank");
-    }
-}
 </script>
 
 <footer class="footer">
