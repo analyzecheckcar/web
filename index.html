@@ -4,9 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inicio</title>
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+
+body {
+    font-family: Arial, sans-serif;
+    line-height:1.6;
+    color:#333;
+
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
 
 /* HEADER */
 header {
@@ -20,28 +30,39 @@ header {
     top: 0;
     z-index: 1000;
 }
-.logo {
-    width: 120px;
-    display: flex;
-    justify-content: flex-start;
-}
-.logo img {
-    height: 50px;
-    width: auto;
-    border-radius: 5px;
-    transform: translateX(250px); /* mueve solo la imagen */
+
+.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
+.rojo { color: #e10600; }
+.amarillo { color: #ffcc00; }
+.blanco { color: #ffffff; }
+
+nav { position:relative; }
+
+nav ul.menu {
+    display:flex;
+    list-style:none;
+    gap:30px;
 }
 
-nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
-nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
+nav ul.menu li a {
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 0;
+}
+
 nav ul.menu li a:hover { color:#ff4500; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
 
-@media(max-width:768px){
-    header { justify-content: space-between; }
-    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
-    nav ul.menu.show { display:flex; }
-    .menu-toggle { display:block; }
+.menu-toggle {
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+    color:white;
+}
+
+/* MAIN */
+main {
+    flex:1;
 }
 
 /* HERO */
@@ -52,32 +73,29 @@ nav ul.menu li a:hover { color:#ff4500; }
     color: white;
     background: url("coche-fondo.png") center/cover no-repeat;
 }
+
 .hero::before {
     content: "";
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.55);
 }
+
 .hero h1,
 .hero p { position: relative; z-index:2; }
+
 .hero h1 { font-size: 2.8rem; margin-bottom:20px; }
 .hero p { font-size:1.3rem; }
 
-/* MARCA */
-.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-.rojo { color: #e10600; }
-.amarillo { color: #ffcc00; }
-.blanco { color: #ffffff; }
-@media(max-width:768px){ .marca-der { display:none; } }
-
-/* POR QUÉ ELEGIRNOS */
+/* POR QUÉ */
 .por-que {
     background: #ffffff;
     padding: 60px 20px;
     text-align: center;
 }
+
 .por-que h2 { font-size:2rem; margin-bottom:40px; }
+
 .beneficios {
     display:flex;
     flex-direction:column;
@@ -85,18 +103,23 @@ nav ul.menu li a:hover { color:#ff4500; }
     max-width:1100px;
     margin:auto;
 }
+
 .beneficio {
     padding:20px;
     border-radius:8px;
     background:#f4f4f4;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:0.3s;
 }
-.beneficio:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+
+.beneficio:hover {
+    transform:translateY(-5px);
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
 .beneficio h3 { margin-bottom:10px; color:#ff4500; }
 .beneficio p { color:#555; }
-@media(min-width:768px){ .beneficios { flex-direction: row; } }
 
-/* SECCIONES DE TRES PARRAFOS */
+/* SECCIONES PARRAFOS */
 .section-parrafos {
     display:flex;
     flex-direction:column;
@@ -105,11 +128,11 @@ nav ul.menu li a:hover { color:#ff4500; }
     max-width:1200px;
     margin:auto;
 }
+
 .parrafo { text-align:center; }
 .parrafo img { max-width:100%; height:auto; margin-bottom:15px; border-radius:5px; }
 .parrafo h3 { font-size:1.8rem; margin-bottom:10px; }
 .parrafo p { font-size:1rem; color:#555; }
-@media(min-width:768px){ .section-parrafos { gap:60px; } }
 
 /* MARCAS */
 .marcas {
@@ -117,7 +140,9 @@ nav ul.menu li a:hover { color:#ff4500; }
     background:#f9f9f9;
     text-align:center;
 }
+
 .marcas h2 { font-size:2rem; margin-bottom:40px; }
+
 .grid-marcas {
     display:grid;
     grid-template-columns: repeat(2,1fr);
@@ -126,64 +151,92 @@ nav ul.menu li a:hover { color:#ff4500; }
     max-width:1000px;
     margin:auto;
 }
+
 .grid-marcas img {
     max-width:120px;
     filter: grayscale(100%);
     opacity:0.8;
     transition:0.3s;
 }
+
 .grid-marcas img:hover {
     filter: grayscale(0%);
     opacity:1;
     transform: scale(1.1);
 }
-@media(min-width:600px){ .grid-marcas { grid-template-columns: repeat(4,1fr); } }
-@media(min-width:992px){ .grid-marcas { grid-template-columns: repeat(6,1fr); } }
-
-/* BOTONES */
-.btn-primary { background:#ff4500; color:white; border:none; padding:12px 20px; border-radius:5px; font-weight:bold; cursor:pointer; text-decoration:none; }
-.btn-primary:hover { background:#e03e00; }
 
 /* FOOTER */
 .footer {
-    width:100%;
     background:#111;
     color:white;
     padding:40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-    box-sizing:border-box;
 }
+
 .footer-container {
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:20px;
-    width:100%;
+    max-width:1200px;
+    margin:auto;
 }
+
 .footer-block h4 { margin-bottom:15px; color:#ffcc00; }
 .footer-block ul { list-style:none; padding:0; }
 .footer-block ul li { margin-bottom:10px; color:#ccc; }
 .footer-block ul li a { color:#ccc; text-decoration:none; }
 .footer-block ul li a:hover { color:#ff4500; }
-.footer-bottom { text-align:center; margin-top:30px; font-size:14px; color:#777; }
+
+.footer-bottom {
+    text-align:center;
+    margin-top:30px;
+    font-size:14px;
+    color:#777;
+}
+
+/* RESPONSIVE */
 @media(max-width:768px){
+
+    .marca-der { display:none; }
+
+    nav ul.menu {
+        flex-direction: column;
+        position:absolute;
+        top:60px;
+        right:0;
+        background:#111;
+        width:220px;
+        padding:20px;
+        border-radius:8px;
+        display:none;
+        box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    nav ul.menu.show { display:flex; }
+
+    nav ul.menu li { margin-bottom:15px; }
+
+    .menu-toggle { display:block; }
+
     .footer-container {
         flex-direction: column;
         text-align:center;
-        gap:30px;
     }
 }
+
+@media(min-width:768px){
+    .beneficios { flex-direction: row; }
+    .grid-marcas { grid-template-columns: repeat(6,1fr); }
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
-    <div class="marca marca-izq">
+    <div class="marca">
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
-    </div>
-
-    <div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
     </div>
 
     <span class="menu-toggle">&#9776;</span>
@@ -201,13 +254,15 @@ nav ul.menu li a:hover { color:#ff4500; }
     </div>
 </header>
 
+<main>
+
 <!-- HERO -->
 <section class="hero">
     <h1></h1>
     <p></p>
 </section>
 
-<!-- POR QUÉ ELEGIRNOS -->
+<!-- POR QUÉ -->
 <section class="por-que">
     <h2>¿Por qué elegir ANALYZECHECKCAR?</h2>
     <div class="beneficios">
@@ -221,35 +276,50 @@ nav ul.menu li a:hover { color:#ff4500; }
         </div>
         <div class="beneficio">
             <h3>🛡️ Compra con Seguridad</h3>
-            <p>Evita estafas, averías costosas y sorpresas desagradables después de comprar.</p>
+            <p>Evita estafas y sorpresas desagradables.</p>
         </div>
     </div>
 </section>
 
-<!-- SECCIONES DE TRES PARRAFOS -->
-<section class="section-parrafos">
-    <div class="parrafo">
-        <img src="imagen1.jpg" alt="Inspección rápida">
-        <h3>Servicios</h3>
-        <p>Al finalizar la revisión, te llamaremos para informarte sobre el estado del vehículo y resolver cualquier duda que puedas tener. Además, te enviaremos por correo electrónico un informe detallado junto con todas las imágenes y vídeos tomados en un máximo de 48 horas tras la revisión.</p>
+<!-- PARRAFOS -->
+<section class="por-que">
+    <div class="beneficios">
+      <div class="beneficio">
+        <img src="paso1.png" width="300" height="200">
+        <h3>Paso 1</h3>
+        <p>Contacto: Nos envías un mensaje o llamas para solicitar la inspección.</p>
     </div>
-    <div class="parrafo">
-        <img src="imagen3.jpg" alt="Asesoramiento profesional">
-        <h3>Asesoramiento profesional</h3>
-        <p>Nuestros expertos te guiarán en la compra, resolviendo dudas y asegurando que tomes la mejor decisión para tu inversión.</p>
+
+    <div class="beneficio">
+        <img src="pavo.jpg" width="300" height="200">
+        <h3>Paso 2</h3>
+        <p>Coordinamos la cita: Nos ponemos en contacto con el vendedor para fijar la hora y lugar adecuados.</p>
     </div>
+
+    <div class="beneficio">
+        <img src="paso3.png" width="300" height="200">
+        <h3>Paso 3</h3>
+        <p>Inspección profesional: Revisamos el coche en detalle y realizamos pruebas necesarias.</p>
+    </div>
+
+    <div class="beneficio">
+        <img src="paso4.png" width="300" height="200">
+        <h3>Paso 4</h3>
+        <p>Informe final: Entregamos un informe completo con fotos y conclusiones claras, para que tomes la mejor decisión.</p>
+    </div>
+</div>
 </section>
 
 <!-- MARCAS -->
 <section class="marcas">
     <h2>Marcas</h2>
     <div class="grid-marcas">
-        <img src="logos/audi.png" alt="Audi">
-        <img src="logos/bmw.png" alt="BMW">
-        <img src="logos/mercedes.png" alt="Mercedes">
-        <img src="logos/volkswagen.png" alt="Volkswagen">
-        <img src="logos/toyota.png" alt="Toyota">
-        <img src="logos/ford.png" alt="Ford">
+        <img src="logos/audi.png">
+        <img src="logos/bmw.png">
+        <img src="logos/mercedes.png">
+        <img src="logos/volkswagen.png">
+        <img src="logos/toyota.png">
+        <img src="logos/ford.png">
         <img src="logos/peugeot.png" alt="Peugeot">
         <img src="logos/renault.png" alt="Renault">
         <img src="logos/seat.png" alt="Seat">
@@ -259,15 +329,11 @@ nav ul.menu li a:hover { color:#ff4500; }
     </div>
 </section>
 
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-</script>
+</main>
 
-<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-container">
+
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -283,9 +349,9 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
         <div class="footer-block">
             <h4>Horarios</h4>
             <ul>
-                <li>Lunes - Viernes: 09:00 - 19:00</li>
-                <li>Sábado: 10:00 - 14:00</li>
-                <li>Domingo: Cerrado</li>
+                <li>Lunes - Viernes: 09:00h - 14:00h</li>
+                <li>Lunes - Viernes: 15:30h - 19:00h</li>
+                <li>Sabado y Domingo: Cerrado</li>
             </ul>
         </div>
 
@@ -299,10 +365,21 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
                 <li><a href="politica-cookies.html">Política de Cookies</a></li>
             </ul>
         </div>
+
     </div>
-    <div class="footer-bottom">© 2026 ANALYZECHECKCAR - Todos los derechos reservados</div>
+
+    <div class="footer-bottom">
+        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
+    </div>
 </footer>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+});
+</script>
 
 </body>
 </html>
-
