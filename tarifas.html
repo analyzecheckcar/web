@@ -14,7 +14,7 @@ body {
     color:#333;
     display:flex;
     flex-direction:column;
-    min-height:100vh; /* para que el footer siempre esté abajo */
+    min-height:100vh; /* footer siempre abajo */
 }
 
 /* HEADER */
@@ -114,18 +114,19 @@ h2 { margin-bottom:20px; }
         flex-direction: column;
         position: fixed;
         top:0;
-        right: -250px; /* inicialmente oculto a la derecha */
+        right: -220px; /* fuera de pantalla inicialmente */
         height: 100vh;
+        width: 220px;
         background:#111;
-        width:220px;
-        padding:60px 20px;
+        padding-top:60px; /* solo separación superior para header */
+        padding-left:20px; 
         display:flex;
+        flex-direction: column;
         gap:20px;
         transition: right 0.3s ease;
         z-index:999;
     }
-    nav ul.menu.show { right:0; } /* se despliega desde la derecha */
-
+    nav ul.menu.show { right:0; } /* pegado al borde derecho */
     .menu-toggle { display:block; }
 
     .tarifa { width:90%; max-width:300px; margin:auto; margin-bottom:20px; }
@@ -253,7 +254,7 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 
 // Función WhatsApp
 function enviarWhatsApp(tarifa) {
-    const numero = "34123456789"; // <-- Cambia por tu número
+    const numero = "34123456789";
     const mensaje = `Hola, quiero contratar la tarifa ${tarifa}`;
     const urlMobile = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
     const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
