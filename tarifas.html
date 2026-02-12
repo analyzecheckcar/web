@@ -4,9 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarifas</title>
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+body {
+    font-family: Arial, sans-serif;
+    line-height:1.6;
+    color:#333;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh; /* Para que el body ocupe toda la altura */
+}
 
 /* HEADER */
 header {
@@ -14,87 +22,174 @@ header {
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 50px;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo {
-    width: 120px;        /* espacio reservado para el logo */
-    display: flex;
-    justify-content: flex-start;
-}
 
-.logo img {
-    height: 50px;
-    width: auto;
-    border-radius: 5px;
-    transform: translateX(350px); /* 👈 mueve SOLO la imagen visualmente */
-}
-
-
-nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
-nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
-nav ul.menu li a:hover { color:#ff4500; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
-
-@media(max-width:768px){
-    header { justify-content: space-between; }
-    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
-    nav ul.menu.show { display:flex; }
-    .menu-toggle { display:block; }
-}
-
-/* SECCIÓN TARIFAS */
-section { padding:60px 20px; text-align:center; }
-h2 { margin-bottom:20px; }
-.tarifas-container { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:20px; }
-.tarifa { background:white; border:1px solid #ddd; padding:20px; width:250px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
-.tarifa h3 { margin-bottom:15px; }
-.tarifa p { margin-bottom:15px; font-size:0.95rem; }
-.btn-primary { background:#25D366; color:white; border:none; padding:12px 20px; border-radius:5px; font-weight:bold; cursor:pointer; font-size:16px; text-decoration:none; display:inline-block; }
-.btn-primary:hover { background:#128C7E; }
-
-/* MARCA A LOS LADOS */
-.marca {
-    font-weight: bold;
-    font-size: 1.2rem;
-    white-space: nowrap;
-}
-
+.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
 .rojo { color: #e10600; }
 .amarillo { color: #ffcc00; }
 .blanco { color: #ffffff; }
 
-/* Ajuste del header */
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-/* Centrar menú */
 nav {
     flex-grow: 1;
     display: flex;
     justify-content: center;
 }
 
-/* Ocultar marca derecha en móviles para que no se vea cargado */
-@media(max-width:768px){
-    .marca-der {
-        display: none;
-    }
+nav ul.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    justify-content: center;
 }
 
+nav ul.menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+nav ul.menu li a:hover { color: #ff4500; }
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* MAIN */
+main {
+    flex: 1; /* Para que main ocupe el espacio disponible y empuje el footer abajo */
+}
+
+/* SECCIÓN TARIFAS */
+section { padding:60px 20px; text-align:center; }
+h2 { margin-bottom:20px; }
+.tarifas-container {
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+.tarifa {
+    background:white;
+    border:1px solid #ddd;
+    padding:20px;
+    width:250px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+    transition:0.3s; /* efecto hover */
+}
+.tarifa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.tarifa h3 { margin-bottom:15px; }
+.tarifa p { margin-bottom:15px; font-size:0.95rem; }
+.btn-primary {
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
+    text-decoration:none;
+    display:inline-block;
+}
+.btn-primary:hover { background:#128C7E; }
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    header { justify-content: space-between; }
+
+    nav ul.menu {
+        flex-direction: column;
+        position: fixed;
+        top:0;
+        right: -250px;
+        height: 100vh;
+        background:#111;
+        width:220px;
+        padding:60px 20px;
+        display:flex;
+        gap:20px;
+        transition: right 0.3s ease;
+        z-index:999;
+    }
+    nav ul.menu.show { right:0; }
+    .menu-toggle { display:block; }
+
+    .tarifa { width:90%; max-width:300px; margin:auto; margin-bottom:20px; }
+}
+
+/* MARCA LATERAL */
+.marca-der { display:block; }
+@media(max-width:768px){ .marca-der { display:none; } }
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: white;
+    padding: 40px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-block h4 {
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+
+.footer-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-block ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.footer-block ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-block ul li a:hover {
+    color: #ff4500;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
+}
+
+@media(max-width:768px){
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
 </style>
 </head>
 <body>
@@ -104,10 +199,6 @@ nav {
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
     </div>
 
-   <!-- <div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div> -->
-
     <span class="menu-toggle">&#9776;</span>
 
     <nav>
@@ -115,8 +206,6 @@ nav {
             <li><a href="index.html">Inicio</a></li>
             <li><a href="tarifas.html">Tarifas</a></li>
             <li><a href="contacto.html">Contacto</a></li>
-            
-
         </ul>
     </nav>
 
@@ -125,12 +214,12 @@ nav {
     </div>
 </header>
 
-
+<main>
 <section>
     <h2>Nuestras Tarifas</h2>
     <div class="tarifas-container">
         <div class="tarifa">
-            <h3>TURISMOS</h3> 
+            <h3>TURISMOS</h3>
             <h5>(Compactos, berlinas, SUV ligeros)</h5>
             <p>
                <li>Inspección exhaustiva completa del vehículo</li>
@@ -138,12 +227,14 @@ nav {
                <li>Asesoramiento personalizado </li>
                <li>Prueba dinámica en carretera </li>
                <li>Informe final detallado y completo </li>
+            </p>
             <p><strong>170€</strong></p>
             <a href="#" onclick="enviarWhatsApp('Básica')" class="btn-primary">WhatsApp</a>
         </div>
+
         <div class="tarifa">
             <h3>SUBS·FURGONETAS·4x4</h3>
-             <h5>(SUV grandes, furgonetas, todoterreno)</h5>
+            <h5>(SUV grandes, furgonetas, todoterreno)</h5>
             <p>
                <li>Inspección exhaustiva completa del vehículo</li>
                <li>Diagnosis electrónica </li>
@@ -154,8 +245,9 @@ nav {
             <p><strong>199€</strong></p>
             <a href="#" onclick="enviarWhatsApp('Completa')" class="btn-primary">WhatsApp</a>
         </div>
+
         <div class="tarifa">
-            <h3>DEPORTIVOS +250 CV</h3> 
+            <h3>DEPORTIVOS +250 CV</h3>
             <h5>(Alta prestación y vehículos especiales)</h5>
             <p>
                <li>Inspección exhaustiva completa del vehículo</li>
@@ -169,6 +261,7 @@ nav {
         </div>
     </div>
 </section>
+</main>
 
 <script>
 // Menú hamburguesa
@@ -184,10 +277,8 @@ function enviarWhatsApp(tarifa) {
     const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
     if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // abrir app WhatsApp en móvil
         window.location.href = urlMobile;
     } else {
-        // abrir WhatsApp Web en PC
         window.open(urlWeb, "_blank");
     }
 }
@@ -195,7 +286,6 @@ function enviarWhatsApp(tarifa) {
 
 <footer class="footer">
     <div class="footer-container">
-        <!-- Bloques de información -->
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -233,58 +323,6 @@ function enviarWhatsApp(tarifa) {
         © 2026 ANALYZECHECKCAR - Todos los derechos reservados
     </div>
 </footer>
-
-<style>
-.footer {
-    background: #111;
-    color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.footer-block h4 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-.footer-block ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-block ul li {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.footer-block ul li a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer-block ul li a:hover {
-    color: #ff4500;
-}
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-}
-</style>
-
 
 </body>
 </html>
