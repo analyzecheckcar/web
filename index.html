@@ -12,7 +12,6 @@ body {
     font-family: Arial, sans-serif;
     line-height:1.6;
     color:#333;
-
     display:flex;
     flex-direction:column;
     min-height:100vh;
@@ -24,8 +23,8 @@ header {
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -36,12 +35,16 @@ header {
 .amarillo { color: #ffcc00; }
 .blanco { color: #ffffff; }
 
-nav { position:relative; }
+nav {
+    position: relative;
+}
 
 nav ul.menu {
     display:flex;
     list-style:none;
     gap:30px;
+    justify-content:center; /* centra los enlaces */
+    flex:1; /* para ocupar espacio entre las marcas */
 }
 
 nav ul.menu li a {
@@ -61,9 +64,7 @@ nav ul.menu li a:hover { color:#ff4500; }
 }
 
 /* MAIN */
-main {
-    flex:1;
-}
+main { flex:1; }
 
 /* HERO */
 .hero {
@@ -199,29 +200,53 @@ main {
 
     .marca-der { display:none; }
 
-    nav ul.menu {
-        flex-direction: column;
-        position:absolute;
-        top:60px;
-        right:0;
-        background:#111;
-        width:220px;
-        padding:20px;
-        border-radius:8px;
-        display:none;
-        box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    header {
+        padding:8px 15px;
+        justify-content:space-between;
     }
 
-    nav ul.menu.show { display:flex; }
-
-    nav ul.menu li { margin-bottom:15px; }
+    .marca { font-size:1rem; }
 
     .menu-toggle { display:block; }
 
-    .footer-container {
+    nav ul.menu {
         flex-direction: column;
-        text-align:center;
+        position: fixed;
+        top:0;
+        right: -250px;
+        height: 100vh;
+        background:#111;
+        width:220px;
+        padding:60px 20px;
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+        transition: right 0.3s ease;
+        z-index:999;
     }
+
+    nav ul.menu.show {
+        right:0;
+    }
+
+    nav ul.menu li a { font-size:0.95rem; }
+
+    .hero { padding:120px 15px; }
+    .hero h1 { font-size:1.8rem; }
+    .hero p { font-size:1rem; }
+
+    .por-que { padding:40px 15px; }
+
+    .beneficio { padding:15px; }
+    .beneficio h3 { font-size:1.1rem; }
+    .beneficio p { font-size:0.9rem; }
+
+    .marcas { padding:40px 15px; }
+    .grid-marcas img { max-width:90px; }
+
+    .footer { padding:30px 15px; }
+    .footer-container { flex-direction:column; text-align:center; }
 }
 
 @media(min-width:768px){
@@ -239,8 +264,6 @@ main {
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
     </div>
 
-    <span class="menu-toggle">&#9776;</span>
-
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
@@ -248,6 +271,8 @@ main {
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
     </nav>
+
+    <span class="menu-toggle">&#9776;</span>
 
     <div class="marca marca-der">
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
@@ -278,6 +303,10 @@ main {
             <h3>🛡️ Compra con Seguridad</h3>
             <p>Evita estafas y sorpresas desagradables.</p>
         </div>
+        <div class="beneficio">
+            <h3>🛡️ Compra con Seguridad</h3>
+            <p>Evita estafas y sorpresas desagradables.</p>
+        </div>
     </div>
 </section>
 
@@ -288,26 +317,26 @@ main {
         <img src="paso1.png" width="300" height="200">
         <h3>Paso 1</h3>
         <p>Contacto: Nos envías un mensaje o llamas para solicitar la inspección.</p>
-    </div>
+      </div>
 
-    <div class="beneficio">
+      <div class="beneficio">
         <img src="pavo.jpg" width="300" height="200">
         <h3>Paso 2</h3>
         <p>Coordinamos la cita: Nos ponemos en contacto con el vendedor para fijar la hora y lugar adecuados.</p>
-    </div>
+      </div>
 
-    <div class="beneficio">
+      <div class="beneficio">
         <img src="paso3.png" width="300" height="200">
         <h3>Paso 3</h3>
         <p>Inspección profesional: Revisamos el coche en detalle y realizamos pruebas necesarias.</p>
-    </div>
+      </div>
 
-    <div class="beneficio">
+      <div class="beneficio">
         <img src="paso4.png" width="300" height="200">
         <h3>Paso 4</h3>
         <p>Informe final: Entregamos un informe completo con fotos y conclusiones claras, para que tomes la mejor decisión.</p>
+      </div>
     </div>
-</div>
 </section>
 
 <!-- MARCAS -->
@@ -376,8 +405,17 @@ main {
 <script>
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
+
+// Abrir/cerrar menú
 toggle.addEventListener('click', () => {
     menu.classList.toggle('show');
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('show');
+    }
 });
 </script>
 
