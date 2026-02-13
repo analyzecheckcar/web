@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarifas</title>
 
+<!-- Script de Stripe Buy Button -->
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -106,8 +109,46 @@ h2 { margin-bottom:20px; }
     font-size:16px;
     text-decoration:none;
     display:inline-block;
+    text-align:center;
 }
 .btn-primary:hover { background:#128C7E; }
+
+/* Ajuste botón Stripe para coincidir con WhatsApp */
+/* Contenedor del botón Stripe */
+stripe-buy-button {
+    display: block;
+    width: 100%;
+    max-width: 250px;   /* mismo ancho que .tarifa */
+    margin: 10px auto 0 auto;
+}
+
+/* Forzar ancho interno real */
+stripe-buy-button::part(base) {
+    width: 100% !important;
+}
+
+/* Estilo del botón */
+stripe-buy-button::part(button) {
+    width: 100% !important;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+stripe-buy-button::part(button):hover {
+    background: #128C7E;
+}
+
+.tarifa stripe-buy-button {
+    width: 100% !important;
+    max-width: 100% !important;
+}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -214,6 +255,8 @@ h2 { margin-bottom:20px; }
 <section>
     <h2>Nuestras Tarifas</h2>
     <div class="tarifas-container">
+
+        <!-- TARIFA 1 -->
         <div class="tarifa">
             <h3>TURISMOS</h3>
             <h5>(Compactos, berlinas, SUV ligeros)</h5>
@@ -225,9 +268,16 @@ h2 { margin-bottom:20px; }
                <li>Informe final detallado y completo </li>
             </ul>
             <p><strong>170€</strong></p>
+
             <a href="#" onclick="enviarWhatsApp('Básica')" class="btn-primary">WhatsApp</a>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5"
+              publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"
+            ></stripe-buy-button>
         </div>
 
+        <!-- TARIFA 2 -->
         <div class="tarifa">
             <h3>SUBS·FURGONETAS·4x4</h3>
             <h5>(SUV grandes, furgonetas, todoterreno)</h5>
@@ -239,9 +289,16 @@ h2 { margin-bottom:20px; }
                <li>Informe final detallado y completo </li>
             </ul>
             <p><strong>199€</strong></p>
+
             <a href="#" onclick="enviarWhatsApp('Completa')" class="btn-primary">WhatsApp</a>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5"
+              publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"
+            ></stripe-buy-button>
         </div>
 
+        <!-- TARIFA 3 -->
         <div class="tarifa">
             <h3>DEPORTIVOS +250 CV</h3>
             <h5>(Alta prestación y vehículos especiales)</h5>
@@ -253,8 +310,15 @@ h2 { margin-bottom:20px; }
                <li>Informe final detallado y completo </li>
             </ul>
             <p><strong>249€</strong></p>
+
             <a href="#" onclick="enviarWhatsApp('Premium')" class="btn-primary">WhatsApp</a>
+
+            <stripe-buy-button 
+              buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5"
+              publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"
+            ></stripe-buy-button>
         </div>
+
     </div>
 </section>
 </main>
