@@ -329,22 +329,5 @@ function enviarWhatsApp(tarifa) {
     </div>
 </footer>
 
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-
-// Abrir/cerrar menú
-toggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-});
-// Cerrar menú al hacer clic fuera
-document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('show');
-    }
-});
-
-</script>
-
 </body>
 </html>
