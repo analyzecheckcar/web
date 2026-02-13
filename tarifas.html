@@ -90,8 +90,11 @@ h2 { margin-bottom:20px; }
     transform: translateY(-5px);
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
-.tarifa h3 { margin-bottom:15px; }
-.tarifa p { margin-bottom:15px; font-size:0.95rem; }
+.tarifa h3 { margin-bottom:10px; }
+.tarifa h5 { margin-bottom:15px; font-weight:normal; }
+.tarifa ul { text-align:left; margin-bottom:15px; padding-left:20px; }
+.tarifa li { margin-bottom:5px; font-size:0.95rem; }
+
 .btn-primary {
     background:#25D366;
     color:white;
@@ -124,24 +127,22 @@ h2 { margin-bottom:20px; }
         flex-direction: column;
         position: fixed;
         top:0;
-        right: -250px;
+        right: -250px; /* fuera de pantalla */
         height: 100vh;
         background:#111;
         width:220px;
         padding:60px 20px;
-        display:flex;
-        flex-direction: column;
         gap:20px;
         box-shadow: -5px 0 20px rgba(0,0,0,0.3);
         transition: right 0.3s ease;
         z-index:999;
     }
 
-    nav ul.menu.show { display:flex; }
+    nav ul.menu.show {
+        right: 0; /* al mostrar, se mueve dentro de la pantalla */
+    }
 
     nav ul.menu li { margin-bottom:15px; }
-
-    .menu-toggle { display:block; }
 }
 
 /* MARCA LATERAL */
@@ -216,13 +217,13 @@ h2 { margin-bottom:20px; }
         <div class="tarifa">
             <h3>TURISMOS</h3>
             <h5>(Compactos, berlinas, SUV ligeros)</h5>
-            <p>
+            <ul>
                <li>Inspección exhaustiva completa del vehículo</li>
                <li>Diagnosis electrónica </li>
                <li>Asesoramiento personalizado </li>
                <li>Prueba dinámica en carretera </li>
                <li>Informe final detallado y completo </li>
-            </p>
+            </ul>
             <p><strong>170€</strong></p>
             <a href="#" onclick="enviarWhatsApp('Básica')" class="btn-primary">WhatsApp</a>
         </div>
@@ -230,13 +231,13 @@ h2 { margin-bottom:20px; }
         <div class="tarifa">
             <h3>SUBS·FURGONETAS·4x4</h3>
             <h5>(SUV grandes, furgonetas, todoterreno)</h5>
-            <p>
+            <ul>
                <li>Inspección exhaustiva completa del vehículo</li>
                <li>Diagnosis electrónica </li>
                <li>Asesoramiento personalizado </li>
                <li>Prueba dinámica en carretera </li>
                <li>Informe final detallado y completo </li>
-            </p>
+            </ul>
             <p><strong>199€</strong></p>
             <a href="#" onclick="enviarWhatsApp('Completa')" class="btn-primary">WhatsApp</a>
         </div>
@@ -244,13 +245,13 @@ h2 { margin-bottom:20px; }
         <div class="tarifa">
             <h3>DEPORTIVOS +250 CV</h3>
             <h5>(Alta prestación y vehículos especiales)</h5>
-            <p>
+            <ul>
                <li>Inspección exhaustiva completa del vehículo</li>
                <li>Diagnosis electrónica </li>
                <li>Asesoramiento personalizado </li>
                <li>Prueba dinámica en carretera </li>
                <li>Informe final detallado y completo </li>
-            </p>
+            </ul>
             <p><strong>249€</strong></p>
             <a href="#" onclick="enviarWhatsApp('Premium')" class="btn-primary">WhatsApp</a>
         </div>
@@ -273,7 +274,6 @@ document.addEventListener('click', (e) => {
         menu.classList.remove('show');
     }
 });
-
 
 // WhatsApp
 function enviarWhatsApp(tarifa) {
