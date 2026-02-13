@@ -123,18 +123,25 @@ button:hover { background:#e03e00; }
     color: #777;
 }
 
-/* --- Responsive / móvil --- */
+/* RESPONSIVE */
 @media(max-width:768px){
+
     .marca-der { display:none; }
+
+    header {
+        padding:8px 15px;
+        justify-content:space-between;
+    }
+
     .marca { font-size:1rem; }
+
     .menu-toggle { display:block; }
 
-    /* Menú móvil a la derecha con animación suave */
     nav ul.menu {
         flex-direction: column;
         position: fixed;
         top:0;
-        right: -220px; /* inicialmente fuera de pantalla */
+        right: -250px;
         height: 100vh;
         background:#111;
         width:220px;
@@ -143,9 +150,10 @@ button:hover { background:#e03e00; }
         flex-direction: column;
         gap:20px;
         box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-        transition: right 0.4s ease; /* animación suave */
+        transition: right 0.3s ease;
         z-index:999;
     }
+    
     nav ul.menu.show {
         right: 0; /* visible */
     }
@@ -194,12 +202,11 @@ button:hover { background:#e03e00; }
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
-                <li>Diagnosis de lectura de fallos</li>
-                <li>Comprobación de Km reales</li>
-                <li>Detección de golpes ocultos</li>
-                <li>Verificación del motor</li>
-                <li>Verificación de caja de cambios</li>
-                <li>Prueba de conducción</li>
+                <li>Inspección exhaustiva completa del vehículo</li>
+                <li>Diagnosis electrónica</li>
+                <li>Asesoramiento personalizado</li>
+                <li>Prueba dinámica en carretera</li>
+                <li>Informe final detallado y completo</li>
             </ul>
         </div>
 
@@ -230,11 +237,19 @@ button:hover { background:#e03e00; }
 </footer>
 
 <script>
-// Menú hamburguesa con deslizamiento
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { 
-    menu.classList.toggle('show'); 
+
+// Abrir/cerrar menú
+toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('show');
+    }
 });
 
 // Formulario con mensaje de confirmación

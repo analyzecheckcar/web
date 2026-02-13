@@ -31,8 +31,8 @@ header {
 }
 
 .marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-.rojo { color: #e10600; }
-.amarillo { color: #ffcc00; }
+.rojo { color: #ffcc00; }
+.amarillo { color: #ffffff; }
 .blanco { color: #ffffff; }
 
 nav {
@@ -109,17 +109,32 @@ h2 { margin-bottom:20px; }
 /* RESPONSIVE */
 @media(max-width:768px){
 
+    .marca-der { display:none; }
+
+    header {
+        padding:8px 15px;
+        justify-content:space-between;
+    }
+
+    .marca { font-size:1rem; }
+
+    .menu-toggle { display:block; }
+
     nav ul.menu {
         flex-direction: column;
-        position:absolute;
-        top:60px;
-        right:0;
+        position: fixed;
+        top:0;
+        right: -250px;
+        height: 100vh;
         background:#111;
         width:220px;
-        padding:20px;
-        border-radius:8px;
-        display:none;
-        box-shadow:0 8px 20px rgba(0,0,0,0.3);
+        padding:60px 20px;
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+        transition: right 0.3s ease;
+        z-index:999;
     }
 
     nav ul.menu.show { display:flex; }
@@ -244,10 +259,21 @@ h2 { margin-bottom:20px; }
 </main>
 
 <script>
-// Menú hamburguesa
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+
+// Abrir/cerrar menú
+toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+});
+
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});
+
 
 // WhatsApp
 function enviarWhatsApp(tarifa) {
@@ -269,12 +295,11 @@ function enviarWhatsApp(tarifa) {
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
-                <li>Diagnosis de lectura de fallos</li>
-                <li>Comprobación de Km reales</li>
-                <li>Detección de golpes ocultos</li>
-                <li>Verificación del motor</li>
-                <li>Verificación de caja de cambios</li>
-                <li>Prueba de conducción</li>
+                <li>Inspección exhaustiva completa del vehículo</li>
+                <li>Diagnosis electrónica</li>
+                <li>Asesoramiento personalizado</li>
+                <li>Prueba dinámica en carretera</li>
+                <li>Informe final detallado y completo</li>
             </ul>
         </div>
 
@@ -290,7 +315,7 @@ function enviarWhatsApp(tarifa) {
         <div class="footer-block">
             <h4>Contáctenos</h4>
             <ul>
-                <li>Email: info@analyzecheckcar.com</li>
+                <li>Email: analyzecheckcar@gmail.com</li>
                 <li>Teléfono: +34 600 123 456</li>
                 <li><a href="aviso-legal.html">Aviso Legal</a></li>
                 <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
@@ -312,6 +337,13 @@ const menu = document.getElementById('menu');
 toggle.addEventListener('click', () => {
     menu.classList.toggle('show');
 });
+// Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});
+
 </script>
 
 </body>
