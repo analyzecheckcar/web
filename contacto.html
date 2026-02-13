@@ -6,46 +6,78 @@
 <title>Contacto</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
 
+/* --- Layout general para footer siempre abajo --- */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height:1.6;
+    color:#333;
+}
+
+/* --- Header --- */
 header {
     background: #111;
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 50px;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo {
-    width: 120px;        /* espacio reservado para el logo */
+
+.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
+.rojo { color: #ffcc00; }
+.amarillo { color: #ffffff; }
+.blanco { color: #ffffff; }
+
+nav {
+    flex-grow: 1;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
-    border-radius: 5px;
-    transform: translateX(350px); /* 👈 mueve SOLO la imagen visualmente */
+nav ul.menu {
+    display:flex;
+    list-style:none;
+    gap:30px;
+    justify-content:center;
+    margin:0;
+    padding:0;
 }
 
-nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
-nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
+nav ul.menu li a {
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 0;
+}
+
 nav ul.menu li a:hover { color:#ff4500; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
-@media(max-width:768px){
-    header { justify-content: space-between; }
-    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
-    nav ul.menu.show { display:flex; }
-    .menu-toggle { display:block; }
+
+.menu-toggle {
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+    color:white;
 }
 
-section { padding:60px 20px; text-align:center; }
+/* --- Sección principal --- */
+section { 
+    padding:60px 20px; 
+    text-align:center; 
+    flex: 1; /* ocupa todo el espacio disponible para empujar footer abajo */
+}
+
 h2 { margin-bottom:20px; }
+
 form { max-width:500px; margin:auto; display:flex; flex-direction:column; }
 input, textarea { margin:10px 0; padding:12px; border-radius:5px; border:1px solid #ccc; font-size:16px; }
 button { border:none; cursor:pointer; margin-top:10px; padding:12px; border-radius:5px; background:#ff4500; color:white; font-weight:bold; font-size:16px; }
@@ -62,81 +94,64 @@ button:hover { background:#e03e00; }
     border-radius:5px;
 }
 
-/* BLOQUE INFERIOR INFORMATIVO */
-.info-extra {
-    background:#111;
-    color:white;
-    padding:50px 20px;
-    margin-top:60px;
-}
-
-.info-contenedor {
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    gap:40px;
-    flex-wrap:wrap;
-}
-
-.info-columna {
-    flex:1;
-    min-width:250px;
-}
-
-.info-columna h3 {
-    margin-bottom:15px;
-    font-size:1.4rem;
-    color:#ff4500;
-}
-
-.info-columna p {
-    font-size:0.95rem;
-    line-height:1.6;
-}
-
-/* MARCA A LOS LADOS */
-.marca {
-    font-weight: bold;
-    font-size: 1.2rem;
-    white-space: nowrap;
-}
-
-.rojo { color: #e10600; }
-.amarillo { color: #ffcc00; }
-.blanco { color: #ffffff; }
-
-/* Ajuste del header */
-header {
+/* --- Footer --- */
+.footer {
     background: #111;
     color: white;
-    padding: 10px 20px;
+    padding: 40px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+.footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Centrar menú */
-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
+.footer-block h4 { margin-bottom:15px; color:#ffcc00; }
+.footer-block ul { list-style:none; padding:0; }
+.footer-block ul li { margin-bottom:10px; color:#ccc; }
+.footer-block ul li a { color:#ccc; text-decoration:none; }
+.footer-block ul li a:hover { color:#ff4500; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
 }
 
-/* Ocultar marca derecha en móviles para que no se vea cargado */
+/* --- Responsive / móvil --- */
 @media(max-width:768px){
-    .marca-der {
-        display: none;
+    .marca-der { display:none; }
+    .marca { font-size:1rem; }
+    .menu-toggle { display:block; }
+
+    /* Menú móvil a la derecha con animación suave */
+    nav ul.menu {
+        flex-direction: column;
+        position: fixed;
+        top:0;
+        right: -220px; /* inicialmente fuera de pantalla */
+        height: 100vh;
+        background:#111;
+        width:220px;
+        padding:60px 20px;
+        display:flex;
+        flex-direction: column;
+        gap:20px;
+        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+        transition: right 0.4s ease; /* animación suave */
+        z-index:999;
+    }
+    nav ul.menu.show {
+        right: 0; /* visible */
     }
 }
-
-
 </style>
 </head>
-
 
 <body>
 
@@ -145,10 +160,6 @@ nav {
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
     </div>
 
-    <!--<div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div>-->
-
     <span class="menu-toggle">&#9776;</span>
 
     <nav>
@@ -156,8 +167,6 @@ nav {
             <li><a href="index.html">Inicio</a></li>
             <li><a href="tarifas.html">Tarifas</a></li>
             <li><a href="contacto.html">Contacto</a></li>
-            
-
         </ul>
     </nav>
 
@@ -165,7 +174,6 @@ nav {
         <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
     </div>
 </header>
-
 
 <section>
     <h2>Contacto</h2>
@@ -181,41 +189,8 @@ nav {
     <div id="mensajeExito">¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.</div>
 </section>
 
-
-<script>
-// Menú hamburguesa
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-
-// Formulario con mensaje de confirmación
-const form = document.getElementById('contactForm');
-const mensaje = document.getElementById('mensajeExito');
-
-form.addEventListener('submit', function(e){
-    e.preventDefault(); // Evita recargar la página
-
-    // Enviar datos a Formspree
-    fetch("https://formspree.io/f/mnjbnwnd", {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if (response.ok) {
-            mensaje.style.display = "block"; // mostrar mensaje
-            form.reset(); // limpiar formulario
-        } else {
-            alert("Hubo un error, por favor inténtalo de nuevo.");
-        }
-    }).catch(error => {
-        alert("Hubo un error, por favor inténtalo de nuevo.");
-    });
-});
-</script>
-
 <footer class="footer">
     <div class="footer-container">
-        <!-- Bloques de información -->
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -233,14 +208,14 @@ form.addEventListener('submit', function(e){
             <ul>
                 <li>Lunes - Viernes: 09:00h - 14:00h</li>
                 <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sabado y Domingo: Cerrado</li>
+                <li>Sábado y Domingo: Cerrado</li>
             </ul>
         </div>
 
         <div class="footer-block">
             <h4>Contáctenos</h4>
             <ul>
-                <li>Email: info@analyzecheckcar.com</li>
+                <li>Email: analyzecheckcar@gmail.com</li>
                 <li>Teléfono: +34 600 123 456</li>
                 <li><a href="aviso-legal.html">Aviso Legal</a></li>
                 <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
@@ -254,57 +229,36 @@ form.addEventListener('submit', function(e){
     </div>
 </footer>
 
-<style>
-.footer {
-    background: #111;
-    color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.footer-block h4 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-.footer-block ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-block ul li {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.footer-block ul li a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer-block ul li a:hover {
-    color: #ff4500;
-}
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
+<script>
+// Menú hamburguesa con deslizamiento
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', () => { 
+    menu.classList.toggle('show'); 
+});
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-}
-</style>
+// Formulario con mensaje de confirmación
+const form = document.getElementById('contactForm');
+const mensaje = document.getElementById('mensajeExito');
 
+form.addEventListener('submit', function(e){
+    e.preventDefault(); 
+    fetch("https://formspree.io/f/mnjbnwnd", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            mensaje.style.display = "block"; 
+            form.reset();
+        } else {
+            alert("Hubo un error, por favor inténtalo de nuevo.");
+        }
+    }).catch(error => {
+        alert("Hubo un error, por favor inténtalo de nuevo.");
+    });
+});
+</script>
 
 </body>
 </html>
