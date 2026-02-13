@@ -108,31 +108,25 @@ h2 { margin-bottom:20px; }
 
 /* RESPONSIVE */
 @media(max-width:768px){
-    header { justify-content: space-between; }
 
-    /* Menú hamburguesa a la derecha */
     nav ul.menu {
         flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -220px; /* fuera de pantalla */
-        width: 220px;
-        height: 100vh;
-        background: #111;
-        padding-top: 60px; /* espacio para el header */
-        padding-left: 20px;
-        gap: 20px;
-        display: flex;
-        transition: right 0.3s ease;
-        z-index: 999;
+        position:absolute;
+        top:60px;
+        right:0;
+        background:#111;
+        width:220px;
+        padding:20px;
+        border-radius:8px;
+        display:none;
+        box-shadow:0 8px 20px rgba(0,0,0,0.3);
     }
-    nav ul.menu.show {
-        right: 0; /* se desliza desde el borde derecho */
-    }
+
+    nav ul.menu.show { display:flex; }
+
+    nav ul.menu li { margin-bottom:15px; }
 
     .menu-toggle { display:block; }
-
-    .tarifa { width:90%; max-width:300px; margin:auto; margin-bottom:20px; }
 }
 
 /* MARCA LATERAL */
@@ -309,6 +303,16 @@ function enviarWhatsApp(tarifa) {
         © 2026 ANALYZECHECKCAR - Todos los derechos reservados
     </div>
 </footer>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+
+// Abrir/cerrar menú
+toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+});
+</script>
 
 </body>
 </html>
