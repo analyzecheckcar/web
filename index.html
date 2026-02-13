@@ -97,6 +97,14 @@ main { flex:1; }
 
 .por-que h2 { font-size:2rem; margin-bottom:40px; }
 
+.texto-central {
+    max-width: 800px;   /* controla el ancho */
+    margin: 0 auto;     /* centra */
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
 .beneficios {
     display:flex;
     flex-direction:column;
@@ -254,6 +262,16 @@ main { flex:1; }
     .grid-marcas { grid-template-columns: repeat(6,1fr); }
 }
 
+.video-container {
+    margin: 40px auto;
+    max-width: 800px;
+}
+
+.video-container video {
+    width: 40%;
+    border-radius: 10px;
+}
+
 </style>
 </head>
 
@@ -261,7 +279,7 @@ main { flex:1; }
 
 <header>
     <div class="marca">
-        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+        <span class="rojo">ANALYZE </span><span class="amarillo">CHECK </span><span class="blanco">CAR</span>
     </div>
 
     <nav>
@@ -275,7 +293,7 @@ main { flex:1; }
     <span class="menu-toggle">&#9776;</span>
 
     <div class="marca marca-der">
-        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+        <span class="rojo">ANALYZE </span><span class="amarillo">CHECK </span><span class="blanco">CAR</span>
     </div>
 </header>
 
@@ -290,6 +308,30 @@ main { flex:1; }
 <!-- POR QUÉ -->
 <section class="por-que">
     <h2>¿Por qué elegir ANALYZECHECKCAR?</h2>
+    <p>🚗 Analyze Check Car
+
+            Comprar un coche es caro.
+            Equivocarte, mucho más.
+            En Analyze Check Car revisamos tu futuro vehículo al mejor precio.
+            Somos un Check Car Low Cost, sí pero en profesionalidad no recortamos nada.
+            ✔️ Inspección profesional sin pagar de más
+            ✔ Analisis claro y sin tecnicismos con informe real del estado de tu futuro coche
+            ✔ Precio más competitivo que la mayoría
+            ✔️La mejor calidad precio del mercado
+
+            🚗 Un coche puede parecer perfecto.
+            Hasta que empiezan los problemas.
+
+            Paga menos por la revisión y
+            no te equivoques
+            Ahorra cientos de € en la compra de tu futuro coche y que no se rompan tus sueños</p><br>
+            <!-- VIDEO -->
+    <div class="video-container">
+        <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+    </div>
     <div class="beneficios">
         <div class="beneficio">
             <h3>🔍 Inspección Profesional</h3>
