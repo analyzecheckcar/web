@@ -1,192 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sección Informativa</title>
-<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 
 <!-- Script de Stripe Buy Button -->
 <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background:#f5f5f5; display:flex; flex-direction:column; min-height:100vh; }
 
-/* BOTÓN WHATSAPP */
 .btn-whatsapp {
-    display:inline-block;
-    background:#25D366;
-    color:white;
-    padding:12px 20px;
-    margin-top:15px;
-    border-radius:5px;
-    font-weight:bold;
-    text-decoration:none;
-    text-align:center;
-    transition:0.3s;
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
 }
-.btn-whatsapp:hover { background:#128C7E; }
 
-/* HEADER */
-header {
-    background:#111;
-    color:white;
-    padding:10px 20px;
+.btn-whatsapp:hover {
+    background: #128C7E;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+    height: 100%;
+}
+
+
+.section {
+    flex: 1;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.section{
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TITULO */
+.section h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* CONTENIDO */
+.content{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    flex-wrap:wrap;
-    position:sticky;
-    top:0;
-    z-index:1000;
+    gap:40px;
 }
-.marca a { color:white; text-decoration:none; font-weight:bold; margin-right:5px; }
-nav ul.menu {
-    display:flex;
-    list-style:none;
-    gap:20px;
-    flex-wrap:wrap;
+
+/* IMAGEN */
+.image{
+    flex:1;
 }
+
+.image img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* LISTA */
+.text{
+    flex:1;
+}
+
+.text ul{
+    padding-left:20px;
+}
+
+.text li{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .text ul{
+        padding-left:0;
+        list-style-position:inside;
+    }
+
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background:#f4f4f4; }
+
+/* HEADER idéntico */
+header {
+    background: #111;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo { width: 120px; display:flex; justify-content:flex-start; }
+.logo img { height:50px; width:auto; border-radius:5px; transform: translateX(250px); }
+
+nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
 nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
 nav ul.menu li a:hover { color:#ff4500; }
 .menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
 
-/* SECCIÓN */
-.section {
-    max-width:1000px;
-    margin:20px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-.section h1 { text-align:center; margin-bottom:20px; font-size:2rem; }
-.content { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
-.image, .tarifa { flex:1 1 300px; }
-.image img { width:100%; border-radius:10px; }
-.tarifa h3 { font-size:1rem; margin-bottom:10px; }
-.tarifa h1 { font-size:2rem; margin-bottom:10px; }
-.tarifa ul { padding-left:20px; margin-bottom:10px; }
-.tarifa li { margin-bottom:10px; font-size:16px; }
-
-/* FOOTER */
-.footer {
-    background:#111;
-    color:white;
-    padding:40px 20px 20px 20px;
-}
-.footer-container {
-    display:flex;
-    justify-content:space-between;
-    max-width:1200px;
-    margin:auto;
-    flex-wrap:wrap;
-    gap:20px;
-}
-.footer-block h4 { margin-bottom:15px; color:#ffcc00; }
-.footer-block ul { list-style:none; padding:0; }
-.footer-block ul li { margin-bottom:10px; color:#ccc; }
-.footer-block ul li a { color:#ccc; text-decoration:none; }
-.footer-block ul li a:hover { color:#ff4500; }
-.footer-bottom { text-align:center; margin-top:30px; font-size:14px; color:#777; }
-
-/* STRIPE BUTTON */
-stripe-buy-button {
-    display:block;
-    width:100%;
-    max-width:250px;
-    margin:10px auto 0 auto;
-}
-stripe-buy-button::part(base),
-stripe-buy-button::part(button) { width:100% !important; }
-stripe-buy-button::part(button) {
-    background:#25D366;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:5px;
-    font-weight:bold;
-    font-size:16px;
-    cursor:pointer;
-}
-stripe-buy-button::part(button):hover { background:#128C7E; }
-
-/* DROPDOWN */
-.dropdown { position:relative; }
-.submenu {
-    display:none;
-    list-style:none;
-    padding:0;
-    margin:0;
-}
-.dropdown:hover .submenu { display:block; position:absolute; background:#111; border-radius:5px; box-shadow:0 5px 15px rgba(0,0,0,0.3); }
-.submenu.show { display:block; position:static; box-shadow:none; }
-
-/* RESPONSIVE */
 @media(max-width:768px){
-    header { justify-content: space-between; flex-wrap:wrap; }
-    nav ul.menu { flex-direction:column; position:absolute; top:60px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
+    header { justify-content: space-between; }
+    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
     nav ul.menu.show { display:flex; }
     .menu-toggle { display:block; }
-    .content { flex-direction:column; text-align:center; gap:15px; }
-    .tarifa ul { padding-left:0; list-style-position:inside; }
-    .footer-container { flex-direction:column; text-align:center; gap:30px; }
 }
+
+/* MARCA */
+.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
+.rojo { color: #ffcc00; }
+.amarillo { color: #ffffff; }
+.blanco { color: #ffffff; }
+nav { flex-grow: 1; display: flex; justify-content: center; }
+@media(max-width:768px){ .marca-der { display: none; } }
+
+/* HERO */
+.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
+.hero h1 { font-size:2.5rem; margin-bottom:20px; }
+.hero p { font-size:1.2rem; margin-bottom:30px; }
+
+/* CONTENIDO */
+.contenido-legal { max-width:1000px; margin:40px auto; padding:0 20px; }
+.contenido-legal h2 { margin-top:30px; color:#222; }
+.contenido-legal p, .contenido-legal li { margin-top:10px; }
 </style>
 </head>
-
 <body>
 
 <header>
     <div class="marca">
-        <a href="index.html">ANALYZE</a>
-        <a href="index.html">CHECK</a>
-        <a href="index.html">CAR</a>
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
     </div>
+
+    <!--<div class="logo">
+        <img src="logo.png" alt="Logo de la tienda">
+    </div>-->
+
     <span class="menu-toggle">&#9776;</span>
+
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="comofunciona.html">¿Cómo funciona?</a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">Tarifas ▾</a>
-                <ul class="submenu">
-                    <li><a href="tarifas-turismos.html">Turismos</a></li>
-                    <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
-                    <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
-                    <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
-                </ul>
-            </li>
+                    <ul class="submenu">
+                     <li><a href="tarifas-turismos.html">Turismos</a></li>
+                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
+                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
+                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
+                    </ul>
             <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="dudas.html">Dudas</a></li>
+            
         </ul>
     </nav>
+
+    <div class="marca">
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
+    </div>
 </header>
+</style>
+
+</head>
+<body>
 
 <div class="section">
-    <h1>DEPORTIVOS +250 CV</h1>
+
+    <h1>Deportivos +250CV</h1>
+
     <div class="content">
+
         <div class="image">
-            <img src="deportivo.png" alt="Vehículo Deportivo">
+            <img src="deportivo.png" alt="Descripción de la imagen">
         </div>
+
         <div class="tarifa">
             <h3>(Alta prestación y vehículos especiales)</h3>
             <h1><strong>249€</strong></h1>
             <ul>
                <li>Inspección exhaustiva completa del vehículo</li>
-               <li>Diagnosis electrónica</li>
-               <li>Asesoramiento personalizado</li>
-               <li>Prueba dinámica en carretera</li>
+               <li>Diagnosis electrónica </li>
+               <li>Asesoramiento personalizado </li>
+               <li>Prueba dinámica en carretera </li>
                <li>Informe final detallado</li>
             </ul>
-            <a href="https://wa.me/34676127908?text=Hola,%20quiero%20solicitar%20la%20revisión%20para%20vehículo%20deportivo%20+250CV" target="_blank" class="btn-whatsapp">💬 Solicitar revisión por WhatsApp</a>
-            <stripe-buy-button buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5" publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"></stripe-buy-button>
+            
+
+            <a href="https://wa.me/34676127908?text=Hola,%20quiero%20solicitar%20la%20revisión%20para%20vehículo%20deportivo%20+250CV"
+                target="_blank"
+                class="btn-whatsapp">💬 Solicitar revisión por WhatsApp</a>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5"
+              publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"
+            ></stripe-buy-button>
         </div>
+
     </div>
+
 </div>
+
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+</script>
 
 <footer class="footer">
     <div class="footer-container">
+        <!-- Bloques de información -->
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -197,14 +273,16 @@ stripe-buy-button::part(button):hover { background:#128C7E; }
                 <li>Informe final detallado y completo</li>
             </ul>
         </div>
+
         <div class="footer-block">
             <h4>Horarios</h4>
             <ul>
                 <li>Lunes - Viernes: 09:00h - 14:00h</li>
                 <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sábado y Domingo: Cerrado</li>
+                <li>Sabado y Domingo: Cerrado</li>
             </ul>
         </div>
+
         <div class="footer-block">
             <h4>Contáctenos</h4>
             <ul>
@@ -216,24 +294,158 @@ stripe-buy-button::part(button):hover { background:#128C7E; }
             </ul>
         </div>
     </div>
-    <div class="footer-bottom">© 2026 ANALYZECHECKCAR - Todos los derechos reservados</div>
+
+    <div class="footer-bottom">
+        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
+    </div>
 </footer>
 
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+<style>
+.amarillo { color: #f8f32b; } 
 
-// Dropdown tarifas móvil
+.footer {
+    background: #111;
+    color: white;
+    padding: 40px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer-block h4 {
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+.footer-block ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-block ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+.footer-block ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer-block ul li a:hover {
+    color: #ff4500;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #111;
+    list-style: none;
+    padding: 10px 0;
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.submenu li {
+    padding: 0;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background: #222;
+    color: #ffcc00;
+}
+
+/* Mostrar en hover (PC) */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* Para móvil */
+.submenu.show {
+    display: block;
+    position: static;
+    box-shadow: none;
+}
+
+/* Ajuste botón Stripe para coincidir con WhatsApp */
+/* Contenedor del botón Stripe */
+stripe-buy-button {
+    display: block;
+    width: 100%;
+    max-width: 250px;   /* mismo ancho que .tarifa */
+    margin: 10px auto 0 auto;
+}
+
+/* Forzar ancho interno real */
+stripe-buy-button::part(base) {
+    width: 100% !important;
+}
+
+/* Estilo del botón */
+stripe-buy-button::part(button) {
+    width: 100% !important;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+stripe-buy-button::part(button):hover {
+    background: #128C7E;
+}
+
+</style>
+
+<script>
+    // Dropdown tarifas en móvil
 const dropdownToggle = document.querySelector('.dropdown-toggle');
 const submenu = document.querySelector('.submenu');
+
 dropdownToggle.addEventListener('click', function(e) {
-    if(window.innerWidth <= 768) {
+    if (window.innerWidth <= 768) {
         e.preventDefault();
         submenu.classList.toggle('show');
     }
 });
 </script>
+</body>
+</html>
 
 </body>
 </html>

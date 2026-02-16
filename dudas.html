@@ -4,10 +4,10 @@
 <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad | ANALYZE CHECK CAR</title>
+<title>Información Legal</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background:#f4f4f4; }
+body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
 
 /* HEADER */
 header {
@@ -15,20 +15,27 @@ header {
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 50px;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
-.logo { width: 120px; display:flex; justify-content:flex-start; }
-.logo img { height:50px; width:auto; border-radius:5px; transform: translateX(250px); }
-
+.logo {
+    width: 120px;
+    display: flex;
+    justify-content: flex-start;
+}
+.logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 5px;
+    transform: translateX(250px);
+}
 nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
 nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
 nav ul.menu li a:hover { color:#ff4500; }
-
 .menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
 
 @media(max-width:768px){
@@ -38,195 +45,33 @@ nav ul.menu li a:hover { color:#ff4500; }
     .menu-toggle { display:block; }
 }
 
+/* HERO (MISMO ESTILO QUE INICIO) */
+.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
+.hero h1 { font-size:2.5rem; margin-bottom:20px; }
+.hero p { font-size:1.2rem; margin-bottom:30px; }
+
 /* MARCA */
 .marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
 .rojo { color: #ffcc00; }
 .amarillo { color: #ffffff; }
 .blanco { color: #ffffff; }
-nav { flex-grow: 1; display: flex; justify-content: center; }
-@media(max-width:768px){ .marca-der { display: none; } }
 
-/* HERO */
-.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
-.hero h1 { font-size:2.5rem; margin-bottom:20px; }
-.hero p { font-size:1.2rem; margin-bottom:30px; }
-
-/* CONTENIDO */
-.contenido-legal { max-width:1000px; margin:40px auto; padding:0 20px; }
-.contenido-legal h2 { margin-top:30px; color:#222; }
-.contenido-legal p, .contenido-legal li { margin-top:10px; }
-</style>
-</head>
-<body>
-
-<header>
-    <div class="marca">
-        <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
-        </a>
-    </div>
-
-   <!-- <div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div>-->
-
-    <span class="menu-toggle">&#9776;</span>
-
-    <nav>
-        <ul class="menu" id="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">Tarifas ▾</a>
-                    <ul class="submenu">
-                     <li><a href="tarifas-turismos.html">Turismos</a></li>
-                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
-                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
-                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
-                    </ul>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="dudas.html">Dudas</a></li>
-            
-        </ul>
-    </nav>
-
-    <div class="marca">
-        <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
-        </a>
-    </div>
-</header>
-
-<section class="hero">
-    <h1>Política de Privacidad</h1>
-    <p>Protección de datos y privacidad de los usuarios de ANALYZECHECKCAR</p>
-</section>
-
-<section class="contenido-legal">
-    <h2>1. Responsable del tratamiento</h2>
-    <p>ANALYZECHECKCAR es responsable de los datos personales que se recogen en este sitio web.</p>
-
-    <h2>2. Finalidad del tratamiento</h2>
-    <p>Los datos recopilados se usarán únicamente para responder consultas y prestar servicios solicitados.</p>
-
-    <h2>3. Conservación de datos</h2>
-    <p>Los datos se conservarán mientras exista una relación comercial o durante el tiempo legal necesario.</p>
-
-    <h2>4. Derechos del usuario</h2>
-    <p>Los usuarios pueden ejercer sus derechos de acceso, rectificación, supresión, oposición y portabilidad enviando un correo a: info@analyzecheckcar.com</p>
-
-    <h2>5. Seguridad de la información</h2>
-    <p>Se aplican medidas técnicas y organizativas para proteger los datos personales.</p>
-</section>
-
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-</script>
-
-
-<footer class="footer">
-    <div class="footer-container">
-        <!-- Bloques de información -->
-        <div class="footer-block">
-            <h4>Servicios</h4>
-            <ul>
-                <li>Inspección exhaustiva completa del vehículo</li>
-                <li>Diagnosis electrónica</li>
-                <li>Asesoramiento personalizado</li>
-                <li>Prueba dinámica en carretera</li>
-                <li>Informe final detallado y completo</li>
-            </ul>
-        </div>
-
-        <div class="footer-block">
-            <h4>Horarios</h4>
-            <ul>
-                <li>Lunes - Viernes: 09:00h - 14:00h</li>
-                <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sabado y Domingo: Cerrado</li>
-            </ul>
-        </div>
-
-        <div class="footer-block">
-            <h4>Contáctenos</h4>
-            <ul>
-                <li>Email: analyzecheckcar@gmail.com</li>
-                <li>Teléfono: +34 600 123 456</li>
-                <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
-                <li><a href="politica-cookies.html">Política de Cookies</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
-    </div>
-</footer>
-
-<style>
-.amarillo { color: #f8f32b; }
-
-.footer {
+/* Ajuste del header */
+header {
     background: #111;
     color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
-.footer-block h4 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-.footer-block ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-block ul li {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.footer-block ul li a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer-block ul li a:hover {
-    color: #ff4500;
-}
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
+nav { flex-grow: 1; display: flex; justify-content: center; }
 
-/* RESPONSIVE */
 @media(max-width:768px){
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
+    .marca-der { display: none; }
 }
 
 /* DROPDOWN */
@@ -275,6 +120,182 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
     box-shadow: none;
 }
 </style>
+</head>
+<body>
+
+<header>
+    <div class="marca">
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
+    </div>
+
+    <!--<div class="logo">
+        <img src="logo.png" alt="Logo de la tienda">
+    </div>-->
+
+    <span class="menu-toggle">&#9776;</span>
+
+    <nav>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Tarifas ▾</a>
+                    <ul class="submenu">
+                     <li><a href="tarifas-turismos.html">Turismos</a></li>
+                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
+                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
+                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
+                    </ul>
+            <li><a href="contacto.html">Contacto</a></li>
+           <li><a href="dudas.html">Dudas</a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="marca">
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
+    </div>
+</header>
+
+<!-- 👇 SOLO CAMBIA ESTE BLOQUE -->
+<section class="hero">
+    <h1>Dudas y Respuestas</h1>
+    <p>Aviso legal, política de privacidad y política de cookies de ANALYZE CHECK CAR.</p>
+</section>
+
+<section style="max-width:1000px; margin:40px auto; padding:0 20px;">
+    <h2>DUDAS</h2>
+    <p>
+<li>1. </li>
+<li>2. </li>
+<li>3. </li>
+<li>4. </li>
+<li>5. </li>
+<li>6. </li>
+<li>7. </li></p>
+
+    <h2>Política de reserva y cancelación</h2>
+    <p>Cobras la inspección completa al reservar. En caso de cancelación del vendedor, se reagenda sin coste adicional. Si no se puede reagendar, se devolverá el importe menos una pequeña cantidad por gestión</p>
+
+    <h2>Responsabilidad</h2>
+    <p>No nos hacemos responsables del uso indebido...</p>
+
+</section>
+
+<script>
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
+</script>
+
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Bloques de información -->
+        <div class="footer-block">
+            <h4>Servicios</h4>
+            <ul>
+                <li>Inspección exhaustiva completa del vehículo</li>
+                <li>Diagnosis electrónica</li>
+                <li>Asesoramiento personalizado</li>
+                <li>Prueba dinámica en carretera</li>
+                <li>Informe final detallado y completo</li>
+            </ul>
+        </div>
+
+        <div class="footer-block">
+            <h4>Horarios</h4>
+            <ul>
+                <li>Lunes - Viernes: 09:00h - 14:00h</li>
+                <li>Lunes - Viernes: 15:30h - 19:00h</li>
+                <li>Sabado y Domingo: Cerrado</li>
+            </ul>
+        </div>
+
+        <div class="footer-block">
+            <h4>Contáctenos</h4>
+            <ul>
+                <li>Email: analyzecheckcar@gmail.com</li>
+                <li>Teléfono: +34 600 123 456</li>
+                <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                <li><a href="politica-cookies.html">Política de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
+    </div>
+</footer>
+
+<style>
+.amarillo { color: #f8f32b; }
+    
+.footer {
+    background: #111;
+    color: white;
+    padding: 40px 20px 20px 20px;
+    font-family: Arial, sans-serif;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer-block h4 {
+    margin-bottom: 15px;
+    color: #ffcc00;
+}
+.footer-block ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-block ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+}
+.footer-block ul li a {
+    color: #ccc;
+    text-decoration: none;
+}
+.footer-block ul li a:hover {
+    color: #ff4500;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #777;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
+</style>
 
 <script>
     // Dropdown tarifas en móvil
@@ -289,5 +310,4 @@ dropdownToggle.addEventListener('click', function(e) {
 });
 </script>
 </body>
-
 </html>
