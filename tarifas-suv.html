@@ -97,16 +97,51 @@ body{
 }
 
 /* RESPONSIVE */
+
 @media(max-width:768px){
+
+    header{
+        flex-wrap:wrap;
+    }
+
+    nav ul.menu{
+        flex-direction:column;
+        width:100%;
+        display:none;
+        background:#111;
+        margin-top:10px;
+        padding:10px;
+    }
+
+    nav ul.menu.show{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .section{
+        margin:15px;
+        padding:20px;
+    }
 
     .content{
         flex-direction:column;
-        text-align:center;
+        gap:20px;
     }
 
-    .text ul{
-        padding-left:0;
-        list-style-position:inside;
+    .tarifa h1{
+        font-size:32px;
+    }
+
+    .tarifa li{
+        font-size:15px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        text-align:center;
     }
 
 }
