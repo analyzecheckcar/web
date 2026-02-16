@@ -1,384 +1,241 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - ANALYZE CHECK CAR</title>
+    <style>
+        /* --- ESTILOS BASE --- */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height:1.6;
+            color:#333;
+            background:#f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
 
-<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+        /* --- HEADER UNIFICADO --- */
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .marca { font-weight: bold; font-size: 1.1rem; }
+        .marca a { text-decoration: none; }
+        .amarillo { color: #ffcc00; }
+        .blanco { color: #ffffff; }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        nav { flex-grow: 1; display: flex; justify-content: center; }
+        nav ul.menu { display: flex; list-style: none; gap: 25px; }
+        nav ul.menu li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav ul.menu li a:hover { color: #ffcc00; }
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: white; }
 
-<title>Contacto</title>
+        /* --- DROPDOWN --- */
+        .dropdown { position: relative; }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0;
+            background: #111;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 220px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .dropdown:hover .submenu { display: block; }
+        .submenu li a { padding: 10px 20px; display: block; font-size: 0.9rem; }
 
-<style>
+        /* --- SECCIÓN CONTACTO --- */
+        section { padding: 60px 20px; flex: 1; max-width: 1100px; margin: auto; width: 100%; }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 10px; color: #111; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 40px; }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
-/* Layout general */
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+        /* FORMULARIO */
+        .contact-left { flex: 1; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        input, textarea {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            outline: none;
+            background: #fdfdfd;
+        }
+        input:focus, textarea:focus { border-color: #ffcc00; }
+        
+        button {
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            background: #111;
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        button:hover { background: #333; transform: translateY(-2px); }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height:1.6;
-    color:#333;
-}
+        /* DERECHA (IMAGEN Y WHATSAPP) */
+        .contact-right {
+            flex: 0 0 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .contact-right img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .contact-link {
+            width: 100%;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            background: #25D366;
+            padding: 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .contact-link:hover { background: #1ebe5d; transform: translateY(-2px); }
 
-/* Header */
+        /* Mensaje éxito */
+        #mensajeExito {
+            display: none;
+            margin-top: 20px;
+            color: #155724;
+            background-color: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        /* --- FOOTER --- */
+        .footer { background: #111; color: white; padding: 50px 20px 20px; }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-block h4 { color: #ffcc00; margin-bottom: 20px; }
+        .footer-block ul { list-style: none; }
+        .footer-block li, .footer-block a { color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; margin-top: 40px; color: #555; border-top: 1px solid #222; padding-top: 20px; }
 
-.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-
-.amarillo { color: #ffcc00; }
-.blanco { color: #ffffff; }
-
-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul.menu {
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
-
-nav ul.menu li a {
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-nav ul.menu li a:hover {
-    color:#ff4500;
-}
-
-.menu-toggle {
-    display:none;
-    font-size:28px;
-    cursor:pointer;
-    color:white;
-}
-
-/* Dropdown de Tarifas */
-nav ul.menu li.dropdown {
-    position: relative;
-}
-
-nav ul.menu li.dropdown .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #111;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 200px;
-    z-index: 1000;
-    border-radius: 5px;
-}
-
-nav ul.menu li.dropdown .submenu li {
-    padding: 10px 20px;
-}
-
-nav ul.menu li.dropdown .submenu li a {
-    color: white;
-    text-decoration: none;
-}
-
-nav ul.menu li.dropdown .submenu li a:hover {
-    color: #ff4500;
-}
-
-/* Mostrar submenú al pasar el mouse */
-nav ul.menu li.dropdown:hover .submenu {
-    display: block;
-}
-
-/* Sección */
-
-section {
-    padding:60px 20px;
-    text-align:center;
-    flex: 1;
-}
-
-h2 { margin-bottom:20px; }
-
-/* CONTENEDOR CONTACTO */
-
-.contact-container{
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    gap:50px;
-    max-width:1000px;
-    margin:40px auto;
-    flex-wrap:wrap;
-}
-
-/* FORMULARIO */
-
-form {
-    max-width:500px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-}
-
-input, textarea {
-    margin:10px 0;
-    padding:12px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    font-size:16px;
-}
-
-button {
-    border:none;
-    cursor:pointer;
-    margin-top:10px;
-    padding:12px;
-    border-radius:5px;
-    background:#ff4500;
-    color:white;
-    font-weight:bold;
-    font-size:16px;
-}
-
-button:hover {
-    background:#e03e00;
-}
-
-/* IMAGEN Y LINK */
-
-.contact-right{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.contact-right img{
-    width:320px;
-    max-width:100%;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.contact-link{
-    margin-top:15px;
-    text-decoration:none;
-    font-weight:bold;
-    color:white;
-    background:#25D366;
-    padding:12px 20px;
-    border-radius:6px;
-    transition:0.3s;
-}
-
-.contact-link:hover{
-    background:#1ebe5d;
-}
-
-/* Mensaje éxito */
-
-#mensajeExito {
-    display:none;
-    margin-top:20px;
-    color:#155724;
-    background-color:#d4edda;
-    border:1px solid #c3e6cb;
-    padding:15px;
-    border-radius:5px;
-}
-
-/* Footer */
-
-.footer {
-    background: #111;
-    color: white;
-    padding: 40px 20px;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
-.footer-block h4 {
-    margin-bottom:15px;
-    color:#ffcc00;
-}
-
-.footer-block ul {
-    list-style:none;
-}
-
-.footer-block ul li {
-    margin-bottom:10px;
-    color:#ccc;
-}
-
-.footer-block ul li a {
-    color:#ccc;
-    text-decoration:none;
-}
-
-.footer-block ul li a:hover {
-    color:#ff4500;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    color: #777;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.menu-toggle { display:block; }
-
-nav ul.menu {
-    flex-direction: column;
-    position: fixed;
-    top:0;
-    right:-250px;
-    background:#111;
-    width:220px;
-    height:100vh;
-    padding:60px 20px;
-    transition:0.3s;
-}
-
-nav ul.menu.show {
-    right:0;
-}
-
-.contact-container{
-    flex-direction:column;
-    align-items:center;
-}
-
-}
-
-</style>
+        /* --- RESPONSIVE --- */
+        @media (max-width: 850px) {
+            .contact-container { flex-direction: column; padding: 25px; }
+            .contact-right { flex: none; width: 100%; }
+            .menu-toggle { display: block; }
+            nav ul.menu {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 260px; height: 100vh;
+                background: #111;
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: 0.4s;
+                z-index: 1001;
+            }
+            nav ul.menu.show { right: 0; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
     <div class="marca">
         <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
+            <span class="amarillo">ANALYZE</span> <span class="blanco">CHECK CAR</span>
         </a>
     </div>
-
-    <!--<div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div>-->
-
-    <span class="menu-toggle">&#9776;</span>
 
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">Tarifas ▾</a>
-                    <ul class="submenu">
-                     <li><a href="tarifas-turismos.html">Turismos</a></li>
-                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
-                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
-                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
-                    </ul>
+                <ul class="submenu">
+                    <li><a href="tarifas-turismos.html">Turismos</a></li>
+                    <li><a href="tarifas-suv.html">SUV · 4x4</a></li>
+                    <li><a href="tarifas-deportivos.html">Deportivos</a></li>
+                    <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
+                </ul>
             </li>
             <li><a href="contacto.html">Contacto</a></li>
             <li><a href="dudas.html">Dudas</a></li>
-            
         </ul>
     </nav>
-
-    <div class="marca">
-        <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
-        </a>
-    </div>
+    <span class="menu-toggle">&#9776;</span>
 </header>
 
 <section>
+    <h2>Contacto</h2>
+    <p class="subtitle">Escríbenos y nos pondremos en contacto contigo lo antes posible.</p>
 
-<h2>Contacto</h2>
+    <div class="contact-container">
+        <div class="contact-left">
+            <form id="contactForm">
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                <textarea name="solicitud" rows="6" placeholder="Cuéntanos: ¿Qué coche quieres revisar y en qué ciudad se encuentra?" required></textarea>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+            <div id="mensajeExito">
+                ¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
+            </div>
+        </div>
 
-<p>Escríbenos y nos pondremos en contacto contigo lo antes posible.</p>
-
-<div class="contact-container">
-
-<form id="contactForm">
-
-<input type="text" name="nombre" placeholder="Tu nombre" required>
-
-<input type="email" name="email" placeholder="Tu correo electrónico" required>
-
-<textarea name="solicitud" rows="5" placeholder="Escribe tu solicitud" required></textarea>
-
-<button type="submit">Enviar mensaje</button>
-
-</form>
-
-<div class="contact-right">
-
-<img src="prueba.jpg" alt="Imagen contacto">
-
-<a href="aviso-legal.html">Aviso Legal</a>
-
-</div>
-
-</div>
-
-<div id="mensajeExito">
-¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
-</div>
-
+        <div class="contact-right">
+            <img src="prueba.jpg" alt="Inspección de vehículos">
+            <p style="margin-bottom: 15px; font-size: 0.9rem; color: #666;">¿Prefieres atención inmediata?</p>
+            <a href="https://wa.me/34600123456" class="contact-link" target="_blank">
+                <span>Contactar por WhatsApp</span>
+            </a>
+            <p style="margin-top: 20px; font-size: 0.85rem;">
+                <a href="aviso-legal.html" style="color: #999; text-decoration: none;">Ver Aviso Legal</a>
+            </p>
+        </div>
+    </div>
 </section>
 
 <footer class="footer">
-
-<div class="footer-container">
-
-<div class="footer-block">
-<h4>Servicios</h4>
+    <div class="footer-container">
+        <div class="footer-block">
+            <h4>Servicios</h4>
             <ul>
                 <li>Inspección exhaustiva completa del vehículo</li>
                 <li>Diagnosis electrónica</li>
@@ -386,74 +243,59 @@ nav ul.menu.show {
                 <li>Prueba dinámica en carretera</li>
                 <li>Informe final detallado y completo</li>
             </ul>
-</div>
-<div class="footer-block">
+        </div>
+
+        <div class="footer-block">
             <h4>Horarios</h4>
             <ul>
                 <li>Lunes - Viernes: 09:00h - 14:00h</li>
                 <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sábado y Domingo: Cerrado</li>
+                <li>Sabado y Domingo: Cerrado</li>
             </ul>
         </div>
 
-<div class="footer-block">
-<h4>Contacto</h4>
+        <div class="footer-block">
+            <h4>Contáctenos</h4>
             <ul>
-                <li>analyzecheckcar@gmail.com</li>
-                <li>+34 600 123 456</li>
+                <li>Email: analyzecheckcar@gmail.com</li>
+                <li>Teléfono: +34 600 123 456</li>
                 <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                <li><a href="politica-privacidad.html">Privacidad</a></li>
+                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
                 <li><a href="politica-cookies.html">Política de Cookies</a></li>
-</ul>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-© 2026 ANALYZECHECKCAR
-</div>
-
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 ANALYZE CHECK CAR - Todos los derechos reservados
+    </div>
 </footer>
 
 <script>
+    // Menú móvil
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('show'));
 
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
+    // Formulario
+    const form = document.getElementById('contactForm');
+    const mensaje = document.getElementById('mensajeExito');
 
-toggle.addEventListener('click', () => {
-menu.classList.toggle('show');
-});
-
-const form = document.getElementById('contactForm');
-const mensaje = document.getElementById('mensajeExito');
-
-form.addEventListener('submit', function(e){
-
-e.preventDefault();
-
-fetch("https://formspree.io/f/mnjbnwnd", {
-
-method: "POST",
-body: new FormData(form),
-headers: { 'Accept': 'application/json' }
-
-}).then(response => {
-
-if(response.ok){
-
-mensaje.style.display="block";
-form.reset();
-
-}else{
-
-alert("Error al enviar");
-
-}
-
-});
-
-});
-
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        fetch("https://formspree.io/f/mnjbnwnd", {
+            method: "POST",
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if(response.ok){
+                mensaje.style.display="block";
+                form.style.display="none";
+                form.reset();
+            } else {
+                alert("Hubo un error al enviar el formulario.");
+            }
+        });
+    });
 </script>
 
 </body>
