@@ -347,19 +347,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// WhatsApp
-function enviarWhatsApp(tarifa) {
-    const numero = "34123456789";
-    const mensaje = `Hola, quiero contratar la tarifa ${tarifa}`;
-    const urlMobile = `whatsapp://send?phone=${numero}&text=${encodeURIComponent(mensaje)}`;
-    const urlWeb = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
-    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = urlMobile;
-    } else {
-        window.open(urlWeb, "_blank");
-    }
-}
 
 // Dropdown tarifas en móvil
     const dropdownToggle = document.querySelector('.dropdown-toggle');
