@@ -1,212 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Información Legal</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+    <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dudas y FAQ - ANALYZE CHECK CAR</title>
+    <style>
+        /* --- ESTILOS BASE --- */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height:1.6;
+            color:#333;
+            background:#f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* HEADER */
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.logo {
-    width: 120px;
-    display: flex;
-    justify-content: flex-start;
-}
-.logo img {
-    height: 50px;
-    width: auto;
-    border-radius: 5px;
-    transform: translateX(250px);
-}
-nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
-nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
-nav ul.menu li a:hover { color:#ff4500; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
+        /* --- HEADER UNIFICADO --- */
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .marca { font-weight: bold; font-size: 1.1rem; }
+        .marca a { text-decoration: none; }
+        .amarillo { color: #ffcc00; }
+        .blanco { color: #ffffff; }
 
-@media(max-width:768px){
-    header { justify-content: space-between; }
-    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
-    nav ul.menu.show { display:flex; }
-    .menu-toggle { display:block; }
-}
+        nav ul.menu { display: flex; list-style: none; gap: 25px; }
+        nav ul.menu li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav ul.menu li a:hover { color: #ffcc00; }
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: white; }
 
-/* HERO (MISMO ESTILO QUE INICIO) */
-.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
-.hero h1 { font-size:2.5rem; margin-bottom:20px; }
-.hero p { font-size:1.2rem; margin-bottom:30px; }
+        /* --- HERO --- */
+        .hero { 
+            padding: 60px 20px; 
+            text-align: center; 
+            background: #1a1a1a; 
+            color: white;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { color: #ccc; font-size: 1.1rem; }
 
-/* MARCA */
-.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-.rojo { color: #ffcc00; }
-.amarillo { color: #ffffff; }
-.blanco { color: #ffffff; }
+        /* --- SECCIÓN DUDAS (ACORDEÓN) --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
 
-/* Ajuste del header */
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-nav { flex-grow: 1; display: flex; justify-content: center; }
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
 
-@media(max-width:768px){
-    .marca-der { display: none; }
-}
+        .faq-question {
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
 
-/* DROPDOWN */
-.dropdown {
-    position: relative;
-}
+        .faq-question:hover { background: #f0f0f0; }
 
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #111;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 220px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    border-radius: 5px;
-}
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fff;
+            color: #666;
+        }
 
-.submenu li {
-    padding: 0;
-}
+        .faq-answer p { padding-bottom: 20px; }
 
-.submenu li a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-}
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question { color: #ffcc00; }
 
-.submenu li a:hover {
-    background: #222;
-    color: #ffcc00;
-}
+        /* --- SECCIÓN LEGAL --- */
+        .legal-box {
+            background: #eee;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        .legal-box h2 { margin-bottom: 15px; font-size: 1.4rem; }
 
-/* Mostrar en hover (PC) */
-.dropdown:hover .submenu {
-    display: block;
-}
+        /* --- DROPDOWN --- */
+        .dropdown { position: relative; }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0;
+            background: #111;
+            padding: 10px 0;
+            min-width: 220px;
+            border-radius: 0 0 8px 8px;
+        }
+        .dropdown:hover .submenu { display: block; }
+        .submenu li a { padding: 10px 20px; display: block; font-size: 0.9rem; }
 
-/* Para móvil */
-.submenu.show {
-    display: block;
-    position: static;
-    box-shadow: none;
-}
-</style>
+        /* --- FOOTER --- */
+        .footer { background: #111; color: white; padding: 50px 20px 20px; margin-top: 60px; }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-block h4 { color: #ffcc00; margin-bottom: 20px; }
+        .footer-block ul { list-style: none; }
+        .footer-block li, .footer-block a { color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; margin-top: 40px; color: #555; border-top: 1px solid #222; padding-top: 20px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul.menu {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 260px; height: 100vh;
+                background: #111;
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: 0.4s;
+                z-index: 1001;
+            }
+            nav ul.menu.show { right: 0; }
+            .submenu { position: static; display: none; background: #222; }
+            .submenu.show { display: block; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="marca">
         <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
+            <span class="amarillo">ANALYZE</span> <span class="blanco">CHECK CAR</span>
         </a>
     </div>
-
-    <!--<div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div>-->
-
-    <span class="menu-toggle">&#9776;</span>
 
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">Tarifas ▾</a>
-                    <ul class="submenu">
-                     <li><a href="tarifas-turismos.html">Turismos</a></li>
-                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
-                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
-                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
-                    </ul>
+                <ul class="submenu">
+                    <li><a href="tarifas-turismos.html">Turismos</a></li>
+                    <li><a href="tarifas-suv.html">SUV · 4x4</a></li>
+                    <li><a href="tarifas-deportivos.html">Deportivos</a></li>
+                    <li><a href="tarifas-personalizada.html">Personalizada</a></li>
+                </ul>
+            </li>
             <li><a href="contacto.html">Contacto</a></li>
-           <li><a href="dudas.html">Dudas</a></li>
-            
+            <li><a href="dudas.html">Dudas</a></li>
         </ul>
     </nav>
 
-    <div class="marca">
-        <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
-        </a>
-    </div>
+    <div class="menu-toggle">&#9776;</div>
 </header>
 
-<!-- 👇 SOLO CAMBIA ESTE BLOQUE -->
 <section class="hero">
     <h1>Dudas y Respuestas</h1>
-    <p>Aviso legal, política de privacidad y política de cookies de ANALYZE CHECK CAR.</p>
+    <p>Todo lo que necesitas saber antes de contratar tu revisión.</p>
 </section>
 
-<section style="max-width:1000px; margin:40px auto; padding:0 20px;">
-    <h2>DUDAS</h2>
-    <p>
-<li>1. </li>
-<li>2. </li>
-<li>3. </li>
-<li>4. </li>
-<li>5. </li>
-<li>6. </li>
-<li>7. </li></p>
+<main class="faq-container">
+    
+    <div class="faq-item">
+        <button class="faq-question">¿Qué incluye exactamente la revisión? <span>+</span></button>
+        <div class="faq-answer">
+            <p>Incluye revisión de mecánica, chasis, diagnosis de errores, prueba en carretera e informe detallado de daños ocultos.</p>
+        </div>
+    </div>
 
-    <h2>Política de reserva y cancelación</h2>
-    <p>Cobras la inspección completa al reservar. En caso de cancelación del vendedor, se reagenda sin coste adicional. Si no se puede reagendar, se devolverá el importe menos una pequeña cantidad por gestión</p>
+    <div class="faq-item">
+        <button class="faq-question">¿Tengo que estar presente en la inspección? <span>+</span></button>
+        <div class="faq-answer">
+            <p>No es necesario. Nosotros nos desplazamos y nos encargamos de todo. Recibirás el informe en tu móvil al finalizar.</p>
+        </div>
+    </div>
 
-    <h2>Responsabilidad</h2>
-    <p>No nos hacemos responsables del uso indebido...</p>
+    <div class="faq-item">
+        <button class="faq-question">¿Cuánto tiempo tarda la revisión? <span>+</span></button>
+        <div class="faq-answer">
+            <p>Suele durar entre 60 y 90 minutos, dependiendo del estado del vehículo y la complejidad de la diagnosis.</p>
+        </div>
+    </div>
 
-</section>
-
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-</script>
+    <div class="legal-box">
+        <h2>Política de reserva y cancelación</h2>
+        <p>Se abona la inspección completa al reservar. En caso de que el vendedor cancele la cita, reagendamos sin coste. Si decides no realizarla por otros motivos, se devolverá el importe descontando 20€ por gastos de gestión administrativa.</p>
+        
+        <br>
+        <h2>Responsabilidad</h2>
+        <p>Analyze Check Car actúa como asesor técnico. El informe refleja el estado del vehículo en el momento de la inspección. No nos hacemos responsables de averías posteriores al servicio o vicios ocultos no detectables sin desmontar piezas motoras.</p>
+    </div>
+</main>
 
 <footer class="footer">
     <div class="footer-container">
-        <!-- Bloques de información -->
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -217,97 +234,55 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
                 <li>Informe final detallado y completo</li>
             </ul>
         </div>
-
         <div class="footer-block">
             <h4>Horarios</h4>
             <ul>
                 <li>Lunes - Viernes: 09:00h - 14:00h</li>
                 <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sabado y Domingo: Cerrado</li>
+                <li>Sábado y Domingo: Cerrado</li>
             </ul>
         </div>
-
         <div class="footer-block">
-            <h4>Contáctenos</h4>
+            <h4>Contacto</h4>
             <ul>
-                <li>Email: analyzecheckcar@gmail.com</li>
-                <li>Teléfono: +34 600 123 456</li>
+                <li>analyzecheckcar@gmail.com</li>
+                <li>+34 600 123 456</li>
                 <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                <li><a href="politica-privacidad.html">Privacidad</a></li>
                 <li><a href="politica-cookies.html">Política de Cookies</a></li>
             </ul>
         </div>
     </div>
-
     <div class="footer-bottom">
-        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
+        © 2026 ANALYZE CHECK CAR - Todos los derechos reservados
     </div>
 </footer>
 
-<style>
-.amarillo { color: #f8f32b; }
-    
-.footer {
-    background: #111;
-    color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.footer-block h4 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-.footer-block ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-block ul li {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.footer-block ul li a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer-block ul li a:hover {
-    color: #ff4500;
-}
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-}
-</style>
-
 <script>
-    // Dropdown tarifas en móvil
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-const submenu = document.querySelector('.submenu');
+    // Menú móvil
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('show'));
 
-dropdownToggle.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-        e.preventDefault();
-        submenu.classList.toggle('show');
-    }
-});
+    // Lógica del Acordeón (Dudas)
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Dropdown móvil
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const submenu = document.querySelector('.submenu');
+    dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            submenu.classList.toggle('show');
+        }
+    });
 </script>
+
 </body>
 </html>

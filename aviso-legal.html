@@ -1,242 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Información Legal</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; line-height:1.6; color:#333; }
+    <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Legal - ANALYZE CHECK CAR</title>
+    <style>
+        /* --- ESTILOS BASE --- */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height:1.6;
+            color:#333;
+            background:#f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-/* HEADER */
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.logo {
-    width: 120px;
-    display: flex;
-    justify-content: flex-start;
-}
-.logo img {
-    height: 50px;
-    width: auto;
-    border-radius: 5px;
-    transform: translateX(250px);
-}
-nav ul.menu { display:flex; list-style:none; gap:30px; justify-content:center; margin:0; padding:0; }
-nav ul.menu li a { color:white; text-decoration:none; font-weight:bold; padding:8px 0; }
-nav ul.menu li a:hover { color:#ff4500; }
-.menu-toggle { display:none; font-size:28px; cursor:pointer; color:white; }
+        /* --- HEADER UNIFICADO --- */
+        header {
+            background: #111;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .marca { font-weight: bold; font-size: 1.1rem; }
+        .marca a { text-decoration: none; }
+        .amarillo { color: #ffcc00; }
+        .blanco { color: #ffffff; }
 
-@media(max-width:768px){
-    header { justify-content: space-between; }
-    nav ul.menu { flex-direction: column; position:absolute; top:70px; right:0; background:#111; width:200px; display:none; padding:10px; border-radius:0 0 5px 5px; }
-    nav ul.menu.show { display:flex; }
-    .menu-toggle { display:block; }
-}
+        nav ul.menu { display: flex; list-style: none; gap: 25px; }
+        nav ul.menu li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav ul.menu li a:hover { color: #ffcc00; }
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: white; }
 
-/* HERO (MISMO ESTILO QUE INICIO) */
-.hero { padding:80px 20px; text-align:center; background:linear-gradient(to right, #f4f4f4, #eaeaea); }
-.hero h1 { font-size:2.5rem; margin-bottom:20px; }
-.hero p { font-size:1.2rem; margin-bottom:30px; }
+        /* --- HERO --- */
+        .hero { 
+            padding: 60px 20px; 
+            text-align: center; 
+            background: #1a1a1a; 
+            color: white;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { color: #ccc; font-size: 1.1rem; }
 
-/* MARCA */
-.marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-.rojo { color: #ffcc00; }
-.amarillo { color: #ffffff; }
-.blanco { color: #ffffff; }
+        /* --- CONTENIDO LEGAL --- */
+        .legal-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            flex: 1;
+        }
 
-/* Ajuste del header */
-header {
-    background: #111;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-nav { flex-grow: 1; display: flex; justify-content: center; }
+        .legal-section { margin-bottom: 40px; }
+        .legal-section h2 { 
+            color: #111; 
+            border-bottom: 2px solid #ffcc00; 
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+        .legal-section h3 { margin: 20px 0 10px 0; color: #444; }
+        .legal-section p { margin-bottom: 15px; text-align: justify; }
+        
+        .legal-list { list-style: none; margin-bottom: 20px; }
+        .legal-list li { 
+            margin-bottom: 15px; 
+            padding-left: 25px; 
+            position: relative; 
+        }
+        .legal-list li::before { 
+            content: "•"; 
+            color: #ffcc00; 
+            font-weight: bold; 
+            position: absolute; 
+            left: 0; 
+            font-size: 1.5rem;
+            line-height: 1.2rem;
+        }
 
-@media(max-width:768px){
-    .marca-der { display: none; }
-}
+        .warning-box {
+            background: #fff9e6;
+            border-left: 5px solid #ffcc00;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
 
-/* DROPDOWN */
-.dropdown {
-    position: relative;
-}
+        /* --- DROPDOWN --- */
+        .dropdown { position: relative; }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0;
+            background: #111;
+            padding: 10px 0;
+            min-width: 220px;
+            border-radius: 0 0 8px 8px;
+        }
+        .dropdown:hover .submenu { display: block; }
+        .submenu li a { padding: 10px 20px; display: block; font-size: 0.9rem; }
 
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #111;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 220px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    border-radius: 5px;
-}
+        /* --- FOOTER --- */
+        .footer { background: #111; color: white; padding: 50px 20px 20px; margin-top: 60px; }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .footer-block h4 { color: #ffcc00; margin-bottom: 20px; }
+        .footer-block ul { list-style: none; }
+        .footer-block li, .footer-block a { color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 0.9rem; }
+        .footer-bottom { text-align: center; margin-top: 40px; color: #555; border-top: 1px solid #222; padding-top: 20px; }
 
-.submenu li {
-    padding: 0;
-}
-
-.submenu li a {
-    display: block;
-    padding: 10px 20px;
-    color: white;
-    text-decoration: none;
-}
-
-.submenu li a:hover {
-    background: #222;
-    color: #ffcc00;
-}
-
-/* Mostrar en hover (PC) */
-.dropdown:hover .submenu {
-    display: block;
-}
-
-/* Para móvil */
-.submenu.show {
-    display: block;
-    position: static;
-    box-shadow: none;
-}
-</style>
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul.menu {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 260px; height: 100vh;
+                background: #111;
+                flex-direction: column;
+                padding: 80px 30px;
+                transition: 0.4s;
+                z-index: 1001;
+            }
+            nav ul.menu.show { right: 0; }
+            .legal-container { padding: 20px; margin: 20px; }
+            .submenu { position: static; display: none; background: #222; }
+            .submenu.show { display: block; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="marca">
         <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
+            <span class="amarillo">ANALYZE</span> <span class="blanco">CHECK CAR</span>
         </a>
     </div>
-
-    <!--<div class="logo">
-        <img src="logo.png" alt="Logo de la tienda">
-    </div>-->
-
-    <span class="menu-toggle">&#9776;</span>
 
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">Tarifas ▾</a>
-                    <ul class="submenu">
-                     <li><a href="tarifas-turismos.html">Turismos</a></li>
-                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
-                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
-                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
-                    </ul>
+                <ul class="submenu">
+                    <li><a href="tarifas-turismos.html">Turismos</a></li>
+                    <li><a href="tarifas-suv.html">SUV · 4x4</a></li>
+                    <li><a href="tarifas-deportivos.html">Deportivos</a></li>
+                    <li><a href="tarifas-personalizada.html">Personalizada</a></li>
+                </ul>
+            </li>
             <li><a href="contacto.html">Contacto</a></li>
             <li><a href="dudas.html">Dudas</a></li>
-            
         </ul>
     </nav>
 
-    <div class="marca">
-        <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
-        </a>
-        <a href="index.html">
-            <span class="blanco">CHECK </span>
-        </a>
-        <a href="index.html">
-             <span class="blanco">CAR</span>
-        </a>
-    </div>
+    <div class="menu-toggle">&#9776;</div>
 </header>
 
-<!-- 👇 SOLO CAMBIA ESTE BLOQUE -->
 <section class="hero">
     <h1>Información Legal</h1>
-    <p>Aviso legal, política de privacidad y política de cookies de ANALYZE CHECK CAR.</p>
+    <p>Condiciones del servicio, privacidad y responsabilidad de ANALYZE CHECK CAR.</p>
 </section>
 
-<section style="max-width:1000px; margin:40px auto; padding:0 20px;">
-    <h2>Aviso Legal</h2>
-    <p>CONDICIONES DEL SERVICIO Y EXENCIÓN DE RESPONSABILIDAD
-Servicio de inspección de vehículos de ocasión (“Analyze Check Car”)
-<li>1. Naturaleza del servicio
-    El servicio de Check Car consiste en una inspección visual, funcional y electrónica no invasiva del vehículo en el estado en que se encuentra en el momento de la revisión.
-    No se realiza desmontaje de piezas, apertura de motor (solo de la tapa motor si la ubiera) caja de cambios, elementos internos, ni pruebas destructivas de ningún tipo.</li>
-<li>2. Alcance de la inspección
-    La inspección puede incluir, entre otros:
-    Diagnóstico electrónico mediante herramienta OBD.
-    Revisión visual de motor, transmisión, suspensión, frenos y carrocería.
-    Prueba dinámica (si las condiciones lo permiten).
-    Revisión de documentación aportada por el vendedor.
-    Detección de posibles anomalías visibles o síntomas compatibles con averías.
-    ⚠️ No se garantiza la detección de fallos ocultos, intermitentes, electrónicos futuros, ni averías que no se manifiesten en el momento de la inspección.</li>
-<li>3. Limitaciones del servicio
-    El cliente acepta expresamente que:
-    El vehículo puede presentar averías futuras aunque el resultado del informe sea favorable.
-    Componentes sujetos a desgaste (embrague, turbo, inyectores, batería, DPF, etc.) pueden fallar posteriormente sin que ello implique error en la inspección.
-    El servicio no equivale a una garantía mecánica ni sustituye a una revisión en taller con desmontaje.</li>
-<li>4. Informe y conclusiones
-    El informe emitido refleja:
-    El estado del vehículo en la fecha y hora de la inspección.
-    Una opinión técnica basada en la experiencia profesional, no una garantía absoluta.
-    Las conclusiones tienen carácter orientativo para ayudar al cliente en su decisión de compra.
-    👉 La decisión final de compra es siempre responsabilidad exclusiva del cliente.</li>
-<li>5. Responsabilidad
-    El prestador del servicio:
-    No se hace responsable de averías, daños o defectos que aparezcan con posterioridad a la inspección.
-    No asume responsabilidad económica por reparaciones, pérdidas, reclamaciones al vendedor o gastos derivados de la compra del vehículo.
-    No responde por información falsa, incompleta u ocultada por el vendedor.
-    La responsabilidad del servicio queda limitada al importe abonado por el cliente, en caso de demostrarse negligencia grave.</li>
-<li>6. Relación con el vendedor
-    El servicio de Check Car es independiente y se presta exclusivamente en interés del cliente comprador.
-    No existe relación contractual con el vendedor del vehículo, ni responsabilidad sobre acuerdos de compraventa, garantías o compromisos entre las partes.</li>
-<li>7. Aceptación del servicio
-    La contratación del servicio implica:
-    Haber leído y comprendido estas condiciones.
-    Aceptar expresamente las limitaciones y exención de responsabilidad.
-    Reconocer que el servicio no garantiza el estado futuro del vehículo.</li></p>
+<main class="legal-container">
+    
+    <div class="legal-section">
+        <h2>Aviso Legal</h2>
+        <p><strong>CONDICIONES DEL SERVICIO Y EXENCIÓN DE RESPONSABILIDAD</strong></p>
+        
+        <ul class="legal-list">
+            <li><strong>1. Naturaleza del servicio:</strong> El servicio consiste en una inspección visual, funcional y electrónica no invasiva. No se realiza desmontaje de piezas, apertura de motor ni pruebas destructivas.</li>
+            
+            <li><strong>2. Alcance de la inspección:</strong> Incluye diagnóstico OBD, revisión de mecánica visible, frenos, carrocería y prueba dinámica. 
+                <div class="warning-box">⚠️ No se garantiza la detección de fallos ocultos, intermitentes o averías que no se manifiesten en el momento exacto de la revisión.</div>
+            </li>
+            
+            <li><strong>3. Limitaciones:</strong> El cliente acepta que componentes de desgaste (embrague, turbo, batería) pueden fallar posteriormente sin que ello implique error en la inspección. El servicio no sustituye una garantía mecánica.</li>
+            
+            <li><strong>4. Informe y conclusiones:</strong> Refleja el estado en la fecha y hora de la inspección. Es una opinión técnica orientativa. <strong>La decisión final de compra es responsabilidad exclusiva del cliente.</strong></li>
+            
+            <li><strong>5. Responsabilidad:</strong> No nos hacemos responsables de averías posteriores, información ocultada por el vendedor o daños derivados de la compra. La responsabilidad queda limitada al importe abonado por el servicio.</li>
+        </ul>
+    </div>
 
-    <h2>Política de reserva y cancelación</h2>
-    <p>Cobras la inspección completa al reservar. En caso de cancelación del vendedor, se reagenda sin coste adicional. Si no se puede reagendar, se devolverá el importe menos una pequeña cantidad por gestión</p>
+    <div class="legal-section">
+        <h2>Política de Reserva y Cancelación</h2>
+        <p>El importe de la inspección se abona íntegramente al realizar la reserva.</p>
+        <ul class="legal-list">
+            <li>En caso de cancelación por parte del vendedor, se reagendará la cita sin coste adicional.</li>
+            <li>Si no es posible reagendar, se devolverá el importe descontando una pequeña tasa por gastos de gestión administrativa.</li>
+        </ul>
+    </div>
 
-    <h2>Responsabilidad</h2>
-    <p>No nos hacemos responsables del uso indebido...</p>
+    <div class="legal-section">
+        <h2>Responsabilidad</h2>
+        <p>Analyze Check Car actúa como asesor técnico independiente. No asumimos responsabilidad sobre los acuerdos de compraventa entre particulares o profesionales, ni sobre la veracidad de los documentos legales aportados por terceros.</p>
+    </div>
 
-</section>
-
-<script>
-const toggle = document.querySelector('.menu-toggle');
-const menu = document.getElementById('menu');
-toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
-</script>
+</main>
 
 <footer class="footer">
     <div class="footer-container">
-        <!-- Bloques de información -->
         <div class="footer-block">
             <h4>Servicios</h4>
             <ul>
@@ -247,97 +228,46 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
                 <li>Informe final detallado y completo</li>
             </ul>
         </div>
-
         <div class="footer-block">
             <h4>Horarios</h4>
             <ul>
                 <li>Lunes - Viernes: 09:00h - 14:00h</li>
                 <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sabado y Domingo: Cerrado</li>
+                <li>Sábado y Domingo: Cerrado</li>
             </ul>
         </div>
-
         <div class="footer-block">
-            <h4>Contáctenos</h4>
+            <h4>Contacto</h4>
             <ul>
-                <li>Email: analyzecheckcar@gmail.com</li>
-                <li>Teléfono: +34 600 123 456</li>
+                <li>analyzecheckcar@gmail.com</li>
+                <li>+34 600 123 456</li>
                 <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                <li><a href="politica-privacidad.html">Privacidad</a></li>
                 <li><a href="politica-cookies.html">Política de Cookies</a></li>
             </ul>
         </div>
     </div>
-
     <div class="footer-bottom">
-        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
+        © 2026 ANALYZE CHECK CAR - Todos los derechos reservados
     </div>
 </footer>
 
-<style>
-.amarillo { color: #f8f32b; }
-    
-.footer {
-    background: #111;
-    color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
-}
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.footer-block h4 {
-    margin-bottom: 15px;
-    color: #ffcc00;
-}
-.footer-block ul {
-    list-style: none;
-    padding: 0;
-}
-.footer-block ul li {
-    margin-bottom: 10px;
-    color: #ccc;
-}
-.footer-block ul li a {
-    color: #ccc;
-    text-decoration: none;
-}
-.footer-block ul li a:hover {
-    color: #ff4500;
-}
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-}
-</style>
-
 <script>
-    // Dropdown tarifas en móvil
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-const submenu = document.querySelector('.submenu');
+    // Menú móvil
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('show'));
 
-dropdownToggle.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-        e.preventDefault();
-        submenu.classList.toggle('show');
-    }
-});
+    // Dropdown móvil
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const submenu = document.querySelector('.submenu');
+    dropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            submenu.classList.toggle('show');
+        }
+    });
 </script>
+
 </body>
 </html>
