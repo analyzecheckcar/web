@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Contacto</title>
+
 <style>
+
 * { margin:0; padding:0; box-sizing:border-box; }
 
-/* --- Layout general para footer siempre abajo --- */
+/* Layout general */
 html, body {
     height: 100%;
     display: flex;
@@ -20,7 +26,8 @@ body {
     color:#333;
 }
 
-/* --- Header --- */
+/* Header */
+
 header {
     background: #111;
     color: white;
@@ -34,8 +41,8 @@ header {
 }
 
 .marca { font-weight: bold; font-size: 1.2rem; white-space: nowrap; }
-.rojo { color: #ffcc00; }
-.amarillo { color: #ffffff; }
+
+.amarillo { color: #ffcc00; }
 .blanco { color: #ffffff; }
 
 nav {
@@ -48,19 +55,17 @@ nav ul.menu {
     display:flex;
     list-style:none;
     gap:30px;
-    justify-content:center;
-    margin:0;
-    padding:0;
 }
 
 nav ul.menu li a {
     color:white;
     text-decoration:none;
     font-weight:bold;
-    padding:8px 0;
 }
 
-nav ul.menu li a:hover { color:#ff4500; }
+nav ul.menu li a:hover {
+    color:#ff4500;
+}
 
 .menu-toggle {
     display:none;
@@ -69,21 +74,93 @@ nav ul.menu li a:hover { color:#ff4500; }
     color:white;
 }
 
-/* --- Sección principal --- */
-section { 
-    padding:60px 20px; 
-    text-align:center; 
-    flex: 1; /* ocupa todo el espacio disponible para empujar footer abajo */
+/* Sección */
+
+section {
+    padding:60px 20px;
+    text-align:center;
+    flex: 1;
 }
 
 h2 { margin-bottom:20px; }
 
-form { max-width:500px; margin:auto; display:flex; flex-direction:column; }
-input, textarea { margin:10px 0; padding:12px; border-radius:5px; border:1px solid #ccc; font-size:16px; }
-button { border:none; cursor:pointer; margin-top:10px; padding:12px; border-radius:5px; background:#ff4500; color:white; font-weight:bold; font-size:16px; }
-button:hover { background:#e03e00; }
+/* CONTENEDOR CONTACTO */
 
-/* Mensaje de confirmación */
+.contact-container{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:50px;
+    max-width:1000px;
+    margin:40px auto;
+    flex-wrap:wrap;
+}
+
+/* FORMULARIO */
+
+form {
+    max-width:500px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+input, textarea {
+    margin:10px 0;
+    padding:12px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+button {
+    border:none;
+    cursor:pointer;
+    margin-top:10px;
+    padding:12px;
+    border-radius:5px;
+    background:#ff4500;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+}
+
+button:hover {
+    background:#e03e00;
+}
+
+/* IMAGEN Y LINK */
+
+.contact-right{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.contact-right img{
+    width:320px;
+    max-width:100%;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.contact-link{
+    margin-top:15px;
+    text-decoration:none;
+    font-weight:bold;
+    color:white;
+    background:#25D366;
+    padding:12px 20px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.contact-link:hover{
+    background:#1ebe5d;
+}
+
+/* Mensaje éxito */
+
 #mensajeExito {
     display:none;
     margin-top:20px;
@@ -94,185 +171,210 @@ button:hover { background:#e03e00; }
     border-radius:5px;
 }
 
-/* --- Footer --- */
+/* Footer */
+
 .footer {
     background: #111;
     color: white;
-    padding: 40px 20px 20px 20px;
-    font-family: Arial, sans-serif;
+    padding: 40px 20px;
 }
+
 .footer-container {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
     margin: auto;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
-.footer-block h4 { margin-bottom:15px; color:#ffcc00; }
-.footer-block ul { list-style:none; padding:0; }
-.footer-block ul li { margin-bottom:10px; color:#ccc; }
-.footer-block ul li a { color:#ccc; text-decoration:none; }
-.footer-block ul li a:hover { color:#ff4500; }
+.footer-block h4 {
+    margin-bottom:15px;
+    color:#ffcc00;
+}
+
+.footer-block ul {
+    list-style:none;
+}
+
+.footer-block ul li {
+    margin-bottom:10px;
+    color:#ccc;
+}
+
+.footer-block ul li a {
+    color:#ccc;
+    text-decoration:none;
+}
+
+.footer-block ul li a:hover {
+    color:#ff4500;
+}
 
 .footer-bottom {
     text-align: center;
     margin-top: 30px;
-    font-size: 14px;
     color: #777;
 }
 
 /* RESPONSIVE */
+
 @media(max-width:768px){
 
-    .marca-der { display:none; }
+.menu-toggle { display:block; }
 
-    header {
-        padding:8px 15px;
-        justify-content:space-between;
-    }
-
-    .marca { font-size:1rem; }
-
-    .menu-toggle { display:block; }
-
-    nav ul.menu {
-        flex-direction: column;
-        position: fixed;
-        top:0;
-        right: -250px;
-        height: 100vh;
-        background:#111;
-        width:220px;
-        padding:60px 20px;
-        display:flex;
-        flex-direction: column;
-        gap:20px;
-        box-shadow: -5px 0 20px rgba(0,0,0,0.3);
-        transition: right 0.3s ease;
-        z-index:999;
-    }
-    
-    nav ul.menu.show {
-        right: 0; /* visible */
-    }
+nav ul.menu {
+    flex-direction: column;
+    position: fixed;
+    top:0;
+    right:-250px;
+    background:#111;
+    width:220px;
+    height:100vh;
+    padding:60px 20px;
+    transition:0.3s;
 }
+
+nav ul.menu.show {
+    right:0;
+}
+
+.contact-container{
+    flex-direction:column;
+    align-items:center;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="marca marca-izq">
-        <span class="rojo">ANALYZE </span><span class="amarillo">CHECK </span><span class="blanco">CAR </span>
-    </div>
 
-    <span class="menu-toggle">&#9776;</span>
+<div class="marca">
+<span class="amarillo">ANALYZE </span>
+<span class="blanco">CHECK </span>
+<span class="blanco">CAR</span>
+</div>
 
-    <nav>
-        <ul class="menu" id="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="tarifas.html">Tarifas</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+<span class="menu-toggle">&#9776;</span>
 
-    <div class="marca marca-der">
-        <span class="rojo">ANALYZE </span><span class="amarillo">CHECK </span><span class="blanco">CAR</span>
-    </div>
+<nav>
+<ul class="menu" id="menu">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="comofunciona.html">¿Cómo funciona?</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+</ul>
+</nav>
+
 </header>
 
 <section>
-    <h2>Contacto</h2>
-    <p>Escríbenos y nos pondremos en contacto contigo lo antes posible.</p>
 
-    <form id="contactForm">
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu correo electrónico" required>
-        <textarea name="solicitud" rows="5" placeholder="Escribe tu solicitud" required></textarea>
-        <button type="submit">Enviar mensaje</button>
-    </form>
+<h2>Contacto</h2>
 
-    <div id="mensajeExito">¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.</div>
+<p>Escríbenos y nos pondremos en contacto contigo lo antes posible.</p>
+
+<div class="contact-container">
+
+<form id="contactForm">
+
+<input type="text" name="nombre" placeholder="Tu nombre" required>
+
+<input type="email" name="email" placeholder="Tu correo electrónico" required>
+
+<textarea name="solicitud" rows="5" placeholder="Escribe tu solicitud" required></textarea>
+
+<button type="submit">Enviar mensaje</button>
+
+</form>
+
+<div class="contact-right">
+
+<img src="prueba.jpg" alt="Imagen contacto">
+
+<a href="aviso-legal.html">Aviso Legal</a>
+
+</div>
+
+</div>
+
+<div id="mensajeExito">
+¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.
+</div>
+
 </section>
 
 <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-block">
-            <h4>Servicios</h4>
-            <ul>
-                <li>Inspección exhaustiva completa del vehículo</li>
-                <li>Diagnosis electrónica</li>
-                <li>Asesoramiento personalizado</li>
-                <li>Prueba dinámica en carretera</li>
-                <li>Informe final detallado y completo</li>
-            </ul>
-        </div>
 
-        <div class="footer-block">
-            <h4>Horarios</h4>
-            <ul>
-                <li>Lunes - Viernes: 09:00h - 14:00h</li>
-                <li>Lunes - Viernes: 15:30h - 19:00h</li>
-                <li>Sábado y Domingo: Cerrado</li>
-            </ul>
-        </div>
+<div class="footer-container">
 
-        <div class="footer-block">
-            <h4>Contáctenos</h4>
-            <ul>
-                <li>Email: analyzecheckcar@gmail.com</li>
-                <li>Teléfono: +34 600 123 456</li>
-                <li><a href="aviso-legal.html">Aviso Legal</a></li>
-                <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
-                <li><a href="politica-cookies.html">Política de Cookies</a></li>
-            </ul>
-        </div>
-    </div>
+<div class="footer-block">
+<h4>Servicios</h4>
+<ul>
+<li>Inspección completa del vehículo</li>
+<li>Diagnosis electrónica</li>
+<li>Asesoramiento personalizado</li>
+<li>Informe detallado</li>
+</ul>
+</div>
 
-    <div class="footer-bottom">
-        © 2026 ANALYZECHECKCAR - Todos los derechos reservados
-    </div>
+<div class="footer-block">
+<h4>Contacto</h4>
+<ul>
+<li>Email: analyzecheckcar@gmail.com</li>
+<li>Teléfono: +34 600 123 456</li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 ANALYZECHECKCAR
+</div>
+
 </footer>
 
 <script>
+
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
 
-// Abrir/cerrar menú
 toggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
+menu.classList.toggle('show');
 });
 
-// Cerrar menú al hacer clic fuera
-document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('show');
-    }
-});
-
-// Formulario con mensaje de confirmación
 const form = document.getElementById('contactForm');
 const mensaje = document.getElementById('mensajeExito');
 
 form.addEventListener('submit', function(e){
-    e.preventDefault(); 
-    fetch("https://formspree.io/f/mnjbnwnd", {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-    }).then(response => {
-        if (response.ok) {
-            mensaje.style.display = "block"; 
-            form.reset();
-        } else {
-            alert("Hubo un error, por favor inténtalo de nuevo.");
-        }
-    }).catch(error => {
-        alert("Hubo un error, por favor inténtalo de nuevo.");
-    });
+
+e.preventDefault();
+
+fetch("https://formspree.io/f/mnjbnwnd", {
+
+method: "POST",
+body: new FormData(form),
+headers: { 'Accept': 'application/json' }
+
+}).then(response => {
+
+if(response.ok){
+
+mensaje.style.display="block";
+form.reset();
+
+}else{
+
+alert("Error al enviar");
+
+}
+
 });
+
+});
+
 </script>
 
 </body>

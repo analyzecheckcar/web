@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad | ANALYZECHECKCAR</title>
+<title>Política de Privacidad | ANALYZE CHECK CAR</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background:#f4f4f4; }
@@ -59,8 +60,16 @@ nav { flex-grow: 1; display: flex; justify-content: center; }
 <body>
 
 <header>
-    <div class="marca marca-izq">
-        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+    <div class="marca">
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
     </div>
 
    <!-- <div class="logo">
@@ -72,14 +81,30 @@ nav { flex-grow: 1; display: flex; justify-content: center; }
     <nav>
         <ul class="menu" id="menu">
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="tarifas.html">Tarifas</a></li>
+            <li><a href="comofunciona.html">¿Cómo funciona?<a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Tarifas ▾</a>
+                    <ul class="submenu">
+                     <li><a href="tarifas-turismos.html">Turismos</a></li>
+                     <li><a href="tarifas-suv.html">SUV · Furgonetas · 4x4</a></li>
+                     <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
+                     <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
+                    </ul>
             <li><a href="contacto.html">Contacto</a></li>
             
         </ul>
     </nav>
 
-    <div class="marca marca-der">
-        <span class="rojo">ANALYZE</span><span class="amarillo">CHECK</span><span class="blanco">CAR</span>
+    <div class="marca">
+        <a href="index.html">
+            <span class="amarillo">ANALYZE </span>
+        </a>
+        <a href="index.html">
+            <span class="blanco">CHECK </span>
+        </a>
+        <a href="index.html">
+             <span class="blanco">CAR</span>
+        </a>
     </div>
 </header>
 
@@ -152,6 +177,8 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 </footer>
 
 <style>
+.amarillo { color: #f8f32b; }
+
 .footer {
     background: #111;
     color: white;
@@ -200,7 +227,66 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
         gap: 30px;
     }
 }
+
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #111;
+    list-style: none;
+    padding: 10px 0;
+    min-width: 220px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+
+.submenu li {
+    padding: 0;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.submenu li a:hover {
+    background: #222;
+    color: #ffcc00;
+}
+
+/* Mostrar en hover (PC) */
+.dropdown:hover .submenu {
+    display: block;
+}
+
+/* Para móvil */
+.submenu.show {
+    display: block;
+    position: static;
+    box-shadow: none;
+}
 </style>
 
+<script>
+    // Dropdown tarifas en móvil
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+const submenu = document.querySelector('.submenu');
+
+dropdownToggle.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+        e.preventDefault();
+        submenu.classList.toggle('show');
+    }
+});
+</script>
 </body>
+
 </html>

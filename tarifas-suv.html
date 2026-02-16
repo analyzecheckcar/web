@@ -4,9 +4,113 @@
 <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Cookies | ANALYZE CHECK CAR</title>
+<title>Sección Informativa</title>
+
+<!-- Script de Stripe Buy Button -->
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
 <style>
-    
+
+.btn-whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+    height: 100%;
+}
+
+
+.section {
+    flex: 1;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.section{
+    max-width:1000px;
+    margin:50px auto;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TITULO */
+.section h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+/* CONTENIDO */
+.content{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+/* IMAGEN */
+.image{
+    flex:1;
+}
+
+.image img{
+    width:100%;
+    border-radius:10px;
+}
+
+/* LISTA */
+.text{
+    flex:1;
+}
+
+.text ul{
+    padding-left:20px;
+}
+
+.text li{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .text ul{
+        padding-left:0;
+        list-style-position:inside;
+    }
+
+}
+
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: Arial, sans-serif; line-height:1.6; color:#333; background:#f4f4f4; }
 
@@ -107,38 +211,53 @@ nav { flex-grow: 1; display: flex; justify-content: center; }
         </a>
     </div>
 </header>
+</style>
 
-<section class="hero">
-    <h1>Política de Cookies</h1>
-    <p>Uso de cookies en el sitio web de ANALYZECHECKCAR</p>
-</section>
+</head>
+<body>
 
-<section class="contenido-legal">
-    <h2>1. ¿Qué son las cookies?</h2>
-    <p>Las cookies son pequeños archivos que se almacenan en tu dispositivo al visitar nuestro sitio web.</p>
+<div class="section">
 
-    <h2>2. Tipos de cookies utilizadas</h2>
-    <ul>
-        <li>Cookies técnicas necesarias para el funcionamiento de la web.</li>
-        <li>Cookies de análisis para mejorar nuestros servicios.</li>
-    </ul>
+    <h1>SUBS·FURGONETAS·4x4</h1>
 
-    <h2>3. Cómo desactivar las cookies</h2>
-    <p>Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento.</p>
+    <div class="content">
 
-    <h2>4. Finalidad</h2>
-    <p>Mejorar la experiencia de usuario y obtener estadísticas de uso de la web.</p>
+        <div class="image">
+            <img src="furgoneta.png" alt="Descripción de la imagen">
+        </div>
 
-    <h2>5. Legislación aplicable</h2>
-    <p>La relación entre el usuario y ANALYZECHECKCAR se rige por la normativa española vigente.</p>
-</section>
+        <div class="tarifa">
+            <h3>(SUV grandes, furgonetas, todoterreno)</h3>
+            <h1><strong>199€</strong></h1>
+            <ul>
+               <li>Inspección exhaustiva completa del vehículo</li>
+               <li>Diagnosis electrónica </li>
+               <li>Asesoramiento personalizado </li>
+               <li>Prueba dinámica en carretera </li>
+               <li>Informe final detallado</li>
+            </ul>
+            
+
+            <a href="https://wa.me/34676127908?text=Hola,%20quiero%20solicitar%20la%20revisión%20para%20vehículo%20deportivo%20+250CV"
+                target="_blank"
+                class="btn-whatsapp">💬 Solicitar revisión por WhatsApp</a>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1SzOssDXdJeq4i3TpbbRHpi5"
+              publishable-key="pk_test_51SzO9TDXdJeq4i3T677iiJsLZMhMk6PYwY9hH5CD9d9knIxKrVgdsRcPUU6cn2kGrnf6o1azaa7Z0ja5F8EsgbEk00OBcTYchT"
+            ></stripe-buy-button>
+        </div>
+
+    </div>
+
+</div>
+
 
 <script>
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
 toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
 </script>
-
 
 <footer class="footer">
     <div class="footer-container">
@@ -277,6 +396,39 @@ toggle.addEventListener('click', () => { menu.classList.toggle('show'); });
     position: static;
     box-shadow: none;
 }
+
+/* Ajuste botón Stripe para coincidir con WhatsApp */
+/* Contenedor del botón Stripe */
+stripe-buy-button {
+    display: block;
+    width: 100%;
+    max-width: 250px;   /* mismo ancho que .tarifa */
+    margin: 10px auto 0 auto;
+}
+
+/* Forzar ancho interno real */
+stripe-buy-button::part(base) {
+    width: 100% !important;
+}
+
+/* Estilo del botón */
+stripe-buy-button::part(button) {
+    width: 100% !important;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+stripe-buy-button::part(button):hover {
+    background: #128C7E;
+}
+
 </style>
 
 <script>
@@ -291,5 +443,8 @@ dropdownToggle.addEventListener('click', function(e) {
     }
 });
 </script>
+</body>
+</html>
+
 </body>
 </html>

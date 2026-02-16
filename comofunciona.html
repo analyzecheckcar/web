@@ -4,7 +4,7 @@
 <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inicio</title>
+<title>¿Cómo funciona?</title>
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -264,12 +264,12 @@ main { flex:1; }
 }
 
 .video-container {
-    margin: 60px auto;
+    margin: 40px auto;
     max-width: 800px;
 }
 
 .video-container video {
-    width: 60%;
+    width: 40%;
     border-radius: 10px;
 }
 
@@ -319,7 +319,6 @@ main { flex:1; }
     position: static;
     box-shadow: none;
 }
-
 </style>
 </head>
 
@@ -328,13 +327,13 @@ main { flex:1; }
 <header>
     <div class="marca">
         <a href="index.html">
-            <span class="amarillo">ANALYZE </span>
+        <span class="amarillo">ANALYZE </span>
         </a>
         <a href="index.html">
-            <span class="blanco">CHECK </span>
+        <span class="blanco">CHECK </span>
         </a>
         <a href="index.html">
-             <span class="blanco">CAR</span>
+        <span class="blanco">CAR</span>
         </a>
     </div>
 
@@ -350,7 +349,6 @@ main { flex:1; }
                      <li><a href="tarifas-deportivos.html">Deportivos +250CV</a></li>
                      <li><a href="tarifas-personalizada.html">Tarifa personalizada</a></li>
                     </ul>
-            </li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
     </nav>
@@ -380,47 +378,33 @@ main { flex:1; }
 
 <!-- POR QUÉ -->
 <section class="por-que">
-    <h2>¿Por qué elegir ANALYZE CHECK CAR?</h2>
-    <p>Comprar un coche es caro. Equivocarte, mucho más.
-            En Analyze Check Car revisamos tu futuro vehículo al mejor precio.</p>
-            Somos un Check Car Low Cost, sí pero en profesionalidad no recortamos nada.</p><br>
-            <b>Paga menos por la revisión, no te equivoques.
-
-            Ahorra cientos de € en la compra de tu futuro coche y que no se rompan tus sueños</b></p><br>
-
-            <p>✔️ Inspección profesional sin pagar de más</p>
-            <p>✔️ Analisis claro y sin tecnicismos con informe real del estado de tu futuro coche<p/>
-            <p>✔️ Precio más competitivo que la mayoría</p>
-            <p>✔️La mejor calidad precio del mercado</p>
-            <p>Un coche puede parecer perfecto.Hasta que empiezan los problemas.
-                
-            <!-- VIDEO -->
-    <div class="video-container">
-        <video controls>
-            <source src="video.mp4" type="video/mp4">
-            Tu navegador no soporta el video.
-        </video>
-    </div>
+    
     <div class="beneficios">
-        <div class="beneficio">
-            <h3>🔍 Inspección Profesional</h3>
-            <p>Revisamos el vehículo a fondo para detectar fallos ocultos antes de que compres.</p>
-        </div>
-        <div class="beneficio">
-            <h3>📄 Informe Claro y Detallado</h3>
-            <p>Te entregamos un informe fácil de entender con fotos y recomendaciones reales.</p>
-        </div>
-        <div class="beneficio">
-            <h3>🛡️ Compra con Seguridad</h3>
-            <p>Evita estafas y sorpresas desagradables.</p>
-        </div>
-        <div class="beneficio">
-            <h3>🛡️ Por definir o borrar</h3>
-            <p>Por definir o borrar</p>
-        </div>
+      <div class="beneficio">
+        <img src="paso1.png" width="300" height="200">
+        <h3>Paso 1</h3>
+        <p>Contacto: Nos envías un mensaje o llamas para solicitar la inspección.</p>
+      </div>
+
+      <div class="beneficio">
+        <img src="pavo.jpg" width="300" height="200">
+        <h3>Paso 2</h3>
+        <p>Coordinamos la cita: Nos ponemos en contacto con el vendedor para fijar la hora y lugar adecuados.</p>
+      </div>
+
+      <div class="beneficio">
+        <img src="paso3.png" width="300" height="200">
+        <h3>Paso 3</h3>
+        <p>Inspección profesional: Revisamos el coche en detalle y realizamos pruebas necesarias.</p>
+      </div>
+
+      <div class="beneficio">
+        <img src="paso4.png" width="300" height="200">
+        <h3>Paso 4</h3>
+        <p>Informe final: Entregamos un informe completo con fotos y conclusiones claras, para que tomes la mejor decisión.</p>
+      </div>
     </div>
 </section>
-
 
 
 <!-- MARCAS -->
@@ -498,17 +482,6 @@ toggle.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
     if (!menu.contains(e.target) && !toggle.contains(e.target)) {
         menu.classList.remove('show');
-    }
-});
-
-// Dropdown tarifas en móvil
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-const submenu = document.querySelector('.submenu');
-
-dropdownToggle.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-        e.preventDefault();
-        submenu.classList.toggle('show');
     }
 });
 </script>
