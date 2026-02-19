@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="coche-fondo.png" sizes="48x48" type="image/png">
+    
+    <title>Donde trabajamos | ANALYZE CHECK CAR</title>
+
+    <style>
+        /* --- RESET Y VARIABLES --- */
+        :root {
+            --amarillo: #ffcc00;
+            --negro: #111111;
+            --gris-claro: #f4f4f4;
+            --blanco: #ffffff;
+            --texto: #333333;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--texto);
+            background: var(--gris-claro);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--negro);
+            color: var(--blanco);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .marca { font-weight: bold; font-size: 1.1rem; }
+        .marca a { text-decoration: none; color: inherit; }
+        .txt-amarillo { color: var(--amarillo); }
+
+        nav ul.menu { display: flex; list-style: none; gap: 25px; }
+        nav ul.menu li a { color: var(--blanco); text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav ul.menu li a:hover { color: var(--amarillo); }
+
+        .menu-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--blanco); }
+
+        /* --- DROPDOWN --- */
+        .dropdown { position: relative; }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; left: 0;
+            background: var(--negro);
+            padding: 10px 0;
+            min-width: 220px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .dropdown:hover .submenu { display: block; }
+        .submenu li a { padding: 10px 20px; display: block; font-size: 0.9rem; font-weight: normal; }
+
+        /* --- BANNER SOLO IMAGEN --- */
+        .banner-contenedor {
+            width: 100%;
+            height: 350px;
+            background: url('banner.gif') center/cover no-repeat;
+            background-color: #222;
+        }
+
+        /* --- CONTENIDO --- */
+        main { flex: 1; }
+
+        .seccion-texto {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .seccion-texto h1 {
+            font-size: 2.5rem;
+            color: var(--negro);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .seccion-texto h1 span { color: #b89600; }
+
+        .caja-blanca {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
+        .caja-blanca h2 { 
+            margin-bottom: 20px; 
+            border-bottom: 3px solid var(--amarillo);
+            display: inline-block;
+        }
+
+        .zonas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+            list-style: none;
+        }
+
+        .zonas-grid li::before { content: "📍 "; }
+
+        .aviso-desplazamiento {
+            background: #fffbe6;
+            border-left: 5px solid var(--amarillo);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .img-mapa {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--negro);
+            color: var(--blanco);
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-block h4 { color: var(--amarillo); margin-bottom: 15px; }
+        .footer-block ul { list-style: none; }
+        .footer-block a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+
+        /* --- MOVIL --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            nav ul.menu {
+                position: fixed;
+                top: 0; right: -100%;
+                width: 250px; height: 100vh;
+                background: var(--negro);
+                flex-direction: column;
+                padding: 70px 20px;
+                transition: 0.4s;
+            }
+            nav ul.menu.show { right: 0; }
+            .banner-contenedor { height: 200px; }
+            .seccion-texto h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="marca">
+            <a href="index.html"><span class="txt-amarillo">ANALYZE</span> CHECK CAR</a>
+        </div>
+        <nav>
+            <ul class="menu" id="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="comofunciona.html">¿Cómo funciona?</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Tarifas ▾</a>
+                    <ul class="submenu">
+                        <li><a href="tarifas-turismos.html">Turismos</a></li>
+                        <li><a href="tarifas-suv.html">SUV · 4x4</a></li>
+                        <li><a href="tarifas-deportivos.html">Deportivos</a></li>
+                        <li><a href="tarifas-personalizada.html">Personalizada</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="dudas.html">Dudas</a></li>
+                <li><a href="donde-trabajamos.html">Donde trabajamos</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="mobile-menu-btn">&#9776;</div>
+    </header>
+
+    <main>
+        <div class="banner-contenedor"></div>
+
+        <section class="seccion-texto">
+            <h1>Donde <span>Trabajamos</span></h1>
+            <p><strong>Tu coche revisado en cualquier punto de la zona.</strong></p>
+
+            <div class="caja-blanca">
+                <h2>Nuestra zona de actuación</h2>
+                <p>En <strong>Analyze Check Car</strong> prestamos servicio especializado en inspección de vehículos en toda la Comunidad de Madrid y áreas próximas.</p>
+                <p> Nos desplazamos donde este el vehículo, ya se en concesionario, compraventa o particular, ofreciendo un servicio ágil, preciso y totalemnte profesional.</p>
+                <p>Operamos de forma habitual en:</p>
+                <ul class="zonas-grid">
+                    <li>Madrid Capital</li>
+                    <li>Zona Norte</li>
+                    <li>Zona Sur</li>
+                    <li>Zona Este</li>
+                    <li>Zona Oeste</li>
+                    <li>Municipios del área metropolitana</li>
+                    <li>Pueblos cercanos a la Comunidad de Madrid</li>
+                    <li>Capitales de provincia cercanas a la Comunidad de Madrid (Bajo condiciones)</li>
+                </ul>
+
+                <div class="aviso-desplazamiento">
+                    <p><strong>🚗 ¿Y si el vehículo está fuera de la Comunidad de Madrid?</strong></p>
+                    <p>👉También realizamos desplazamientos fuera de la Comunidad de Madrid bajo presupuesto personalizado.</p>
+                    <p>Si la ubicación se encuentra fuera de nuestro radio habitual, consúltanos directamente y te facilitaremos disponibilidad y coste adaptado a la distancia.</p><br>
+                    <p>✅ Compromiso claro</p>
+                    <p>Nuestra prioridad es que tomes decisiones seguras, sin importar dónde esté el coche.
+                    Transparencia, rapidez y cobertura profesional en cada desplazamiento.</p><br>
+                    <p>📲 Escríbenos con la ubicación exacta y te confirmamos condiciones del servicio</p>
+                </div>
+            </div>
+
+            <img src="mapa.jpg" alt="Mapa de cobertura" class="img-mapa">
+        </section>
+    </main>
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-block">
+            <h4>Servicios</h4>
+            <ul>
+                <li>Inspección exhaustiva completa del vehículo</li>
+                <li>Diagnosis electrónica</li>
+                <li>Asesoramiento personalizado</li>
+                <li>Prueba dinámica en carretera</li>
+                <li>Informe final detallado y completo</li>
+            </ul>
+        </div>
+        <div class="footer-block">
+            <h4>Horarios</h4>
+            <ul>
+                <li>Lunes - Viernes: 09:00h - 14:00h</li>
+                <li>Lunes - Viernes: 15:30h - 19:00h</li>
+                <li>Sábado y Domingo: Cerrado</li>
+            </ul>
+        </div>
+        <div class="footer-block">
+            <h4>Contacto</h4>
+            <ul>
+                <li>analyzecheckcar@gmail.com</li>
+                <li>+34 600 123 456</li>
+                <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                <li><a href="politica-privacidad.html">Privacidad</a></li>
+                <li><a href="politica-cookies.html">Política de Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2026 ANALYZE CHECK CAR - Todos los derechos reservados
+    </div>
+</footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('menu');
+        menuBtn.addEventListener('click', () => { menu.classList.toggle('show'); });
+    </script>
+</body>
+</html>
